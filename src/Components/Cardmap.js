@@ -1,6 +1,6 @@
 import React, { useState,} from "react";
 import { useSelector,useDispatch, } from "react-redux";
-import { Card,CardBody,CardTitle,CardText, CardImg } from "reactstrap";
+import { Card,CardBody,CardTitle,CardTitle,CardText, CardImg } from "reactstrap";
 import carddata from '../Services/Actionns/actions';
 import { useEffect } from 'react'
 export default function Cardmap() {
@@ -17,24 +17,53 @@ export default function Cardmap() {
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-3 col-lg-4">
-            <Card className="my-2">
-              <CardBody>
-                <div className="d-flex justify-content-between">
-                  <CardTitle tag="h5" className="text-start" key={item.id}>
-                    {item.title}
-                  </CardTitle>
-                  <CardTitle tag="h5" className=" btn btn-dark">
-                    ${item.price}
-                  </CardTitle>
-                </div>
-                <CardText className="d-flex text-muted">{item.description}</CardText>
-                <button
-                  className="btn btn-outline-primary d-flex justify-content-end btn1"
-                >
-                  Add to Cart
-                </button>
-              </CardBody>
-            </Card>
+          <Card
+        className="card"
+        style={{
+          width: "20rem",
+        }}
+      >
+        <img
+          className="img-fluid"
+          alt="Sample"
+          src={`https://avatars.dicebear.com/v2/avataaars/${item.id}.svg?options%5Bmood%5D%5B%5D=happy`}
+        />
+        <CardBody className="cbd">
+          <CardTitle tag="h4">
+            <div className="text-start">{name}</div>
+          </CardTitle>
+          <CardSubtitle className="mb-2 text-muted">
+            <div className="text-start">
+              <li>
+                <FiMail />
+                <span className="fimail">{email}</span>
+              </li>
+              <li>
+                <FiPhoneCall />
+                <span className="fimail">{phone}</span>
+              </li>
+              <li>
+                <IoEarthOutline />
+                <span className="fimail">{website}</span>
+              </li>
+            </div>
+          </CardSubtitle>
+        </CardBody>
+        <CardFooter className="d-flex justify-content-around foot">
+          <button
+            className="btn text-danger"
+            onClick={() => setlike((prevState) => !prevState)}
+          >
+            {like ? <AiFillHeart /> : <AiOutlineHeart />}
+          </button>
+          <button className="btn" onClick={handleForm}>
+            <AiFillEdit />
+          </button>
+          <button className="btn" onClick={() => dispatch(fetchdelete(id))}>
+            <AiFillDelete />
+          </button>
+        </CardFooter>
+      </Card>
           </div>
         </div>
       </div>;
