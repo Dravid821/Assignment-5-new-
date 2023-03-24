@@ -1,6 +1,7 @@
 import axios from "axios"
-import { FETCH_DATA_SUCCESS, FETCH_DATA_COME, FETCH_DATA_ERROR,} from "../Constant";
-let url = "https://dummyjson.com/products"
+import { FETCH_DATA_SUCCESS, FETCH_DATA_COME, FETCH_DATA_ERROR,SET_DATA,
+    SET_PAGE,} from "../Constant";
+let url = "https://dummyjson.com/products?limit=100"
 
 export const fetchcome = () => {
     return {
@@ -21,6 +22,12 @@ export const  fetcherror = (err) => {
         payload: err
     }
 }
+export const setPage = (page) => {
+    return {
+      type: "SET_PAGE",
+      payload: page,
+    };
+  };
 export const carddata = () => {
     return (dispatch)=>{
     dispatch(fetchcome())

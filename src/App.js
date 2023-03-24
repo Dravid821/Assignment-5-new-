@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Cardmap from "./Components/Cardmap"
+import Cardmap from "../src/Components/Cardmap"
 
 function App() {
   return (
-    <div className="App">
+    <div >
     <Cardmap/>
     </div>
   );
