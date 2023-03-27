@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Pagination } from 'reactstrap';
+import { Spinner } from '@chakra-ui/react'
 import {
   Card,
   CardBody,
@@ -18,6 +19,7 @@ import {
   MDBCardImage,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
 import carddata, { setPage } from "../Services/Actionns/actions";
 import { useEffect } from "react";
 export default function Cardmap() {
@@ -73,7 +75,7 @@ export default function Cardmap() {
                             </a>
                           </p>
                           <p className="small text-danger">
-                            <s>{item.brand}</s>
+                            <p>{item.brand}</p>
                           </p>
                         </div>
 
@@ -94,14 +96,26 @@ export default function Cardmap() {
                           </div>
                         </div>
                         <button type="button" class="btn btn-dark">
-                          View More
+                        <NavLink
+                          to={`/${item.id}`}
+                          className="slink text-white"
+                        >
+                         View More
+                        </NavLink>  
+                          
                         </button>
                       </MDBCardBody>
                     </MDBCard>
                   </div>
                 );
               })
-            : "Data Loading"}
+            : <div className="text-center"><Spinner
+            thickness='20px'
+            speed='0.90s'
+            emptyColor='white.500'
+            color='blue.500'
+            size='xl'
+          /></div>}
             <Pagination currentPage={currentPage} totalPages={totalPages} onChangePage={handleChangePage} />
         </div>
       </div>
