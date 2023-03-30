@@ -19,7 +19,7 @@ import {
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Menu, MenuButton, MenuList, MenuItem, Avatar } from "@chakra-ui/react";
-export default function Navbar(direction, ...args) {
+export default function Navbar(direction,...args) {
   // const items = useSelector((state) => state.datareducer.user.products);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);

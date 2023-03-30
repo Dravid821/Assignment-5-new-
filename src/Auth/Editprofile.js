@@ -27,19 +27,21 @@ const ActiveUser = () => {
     signupdata && signupdata.filter((user) => user.isActive === true);
   return ActiveUser;
 };
+let signupdata = JSON.parse(localStorage.getItem("signUpData"));
+console.log(signupdata);
 export default function UserProfileEdit() {
-
   const [item] = useState(ActiveUser());
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+  console.log("item 0", item);
   const initialValues = {
     first_name: item[0].first_name,
     last_name: item[0].last_name,
     email: item[0].email,
     mobile: item[0].mobile,
   };
-  console.log(item);
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  let loggin = JSON.parse(localStorage.getItem("isLogin"));
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, } =
     useFormik({
       initialValues,
       validationSchema: EditSchema,
@@ -50,26 +52,34 @@ export default function UserProfileEdit() {
         console.log("Form-data", values);
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         console.log(signupdata);
-        signupdata = signupdata.map((item) => {
-          if (!item.isActive) {
-            toast.error("User Are Not Active");
+        signupdata = signupdata.map((items) => {
+          if (!items.isActive) {
+            return items;
           } else {
             if (
-              item.first_name === values.first_name &&
-              item.last_name === values.last_name &&
-              item.email === values.email &&
-              item.mobile === values.mobile
+              items.first_name === values.first_name &&
+              items.last_name === values.last_name &&
+              items.email === values.email &&
+              items.mobile === values.mobile
             ) {
               toast.error("Data same as Privious Data");
+              return items;
             } else {
-              item.first_name = values.first_name;
-              item.last_name = values.last_name;
-              item.email = values.email;
-              item.mobile = values.mobile;
+              if (items.email === values.email) {
+                toast.error("emails Are Same")
+                return items;
+              }else{
+                items.first_name = values.first_name;
+                items.last_name = values.last_name;
+                items.mobile = values.mobile;
+                items.email = values.email;
+            }
               toast.success("Profile Data Update Successfully.");
+              navigate("/profile");
+              //localStorage.setItem("signUpData", JSON.stringify(items));
             }
           }
-          return item;
+          return items;
         });
         // console.log("string",JSON.stringify(values))
         // console.log("object",JSON.parse(values))
@@ -77,7 +87,6 @@ export default function UserProfileEdit() {
         action.resetForm();
       },
     });
-
   return (
     <Flex
       minH={"100vh"}
@@ -165,35 +174,31 @@ export default function UserProfileEdit() {
               ) : null}
             </FormControl>
             <Stack spacing={6} direction={["column", "row"]}>
-              <NavLink>
-                <Button
-                  bg={"red.400"}
-                  color={"white"}
-                  w="full"
-                  _hover={{
-                    bg: "red.500",
-                  }}
-                >
-                  Edit
-                </Button>
-              </NavLink>
-              <NavLink to={"/"}>
-                <Button
-                  type="submit"
-                  bg={"blue.400"}
-                  color={"white"}
-                  w="full"
-                  _hover={{
-                    bg: "blue.500",
-                  }}
-                >
-                  submit
-                </Button>
-              </NavLink>
+              <Button
+                bg={"red.400"}
+                color={"white"}
+                w="full"
+                _hover={{
+                  bg: "red.500",
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                bg={"blue.400"}
+                color={"white"}
+                w="full"
+                _hover={{
+                  bg: "blue.500",
+                }}
+              >
+                submit
+              </Button>
             </Stack>
           </Box>
         </form>
       </Stack>
     </Flex>
   );
-}
+ }

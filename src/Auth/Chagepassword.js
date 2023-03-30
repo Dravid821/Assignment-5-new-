@@ -12,6 +12,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import React,{useState} from "react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +23,15 @@ const initialValues = {
   new_password: "",
   confirm_password: "",
 };
+// const ActiveUser = () => {
+//   let signupdata = JSON.parse(localStorage.getItem("signUpData"));
+//   let ActiveUser =
+//     signupdata && signupdata.filter((user) => user.isActive === true);
+//   return ActiveUser;
+// };
 export default function ResetPasswordForm() {
+  // const [item] = useState(ActiveUser());
+  // console.log(item)
   const navigate = useNavigate();
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -35,26 +44,26 @@ export default function ResetPasswordForm() {
         let Cpass = values.current_password;
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         signupdata = signupdata.map((item) => {
-            if (!item.isActive) {
-              return item;
-            } else {
-              if (item.password === Cpass) {
-                if (Npass === Cpass) {
-                  toast.error("Opps it's same try with new!");
-                } else {
-                  item.password = Npass;
-                  localStorage.setItem(
-                    "signUpData",
-                    JSON.stringify(signupdata)
-                  );
-                  toast.success("Password Change Successfully");
-                }
+          if (!item.isActive) {
+            return item;
+          } else {
+            if (item.password === Cpass) {
+              
+              if (Npass === Cpass) {
+                toast.error("Opps it's same try with new!");
               } else {
-                toast.error("Incorrect Password");
+                item.password = Cpass;
+                item.password = values.confirm_password;
+                localStorage.setItem("signUpData", JSON.stringify(signupdata));
+                toast.success("Password Change Successfully");
+                navigate("/login")
               }
-              return item;
+            } else {
+              toast.error("Incorrect Password");
             }
-          })
+            return item;
+          }
+        });
         localStorage.setItem("signUpData", JSON.stringify(signupdata));
         console.log("Form-data", values);
         // let signupdata = JSON.parse(localStorage.getItem("signUpData"));
@@ -118,7 +127,7 @@ export default function ResetPasswordForm() {
               </FormControl>
               <Stack spacing={10}>
                 <Button type="submit" bg={"blue.400"} color={"white"}>
-                  <NavLink to={"/login"}>Change Password</NavLink>
+                 Change Password
                 </Button>
               </Stack>
             </Stack>

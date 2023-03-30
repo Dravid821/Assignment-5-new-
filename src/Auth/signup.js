@@ -35,7 +35,7 @@ export default function SignupCard() {
     mobile: "",
     password: "",
     confirm_password: "",
-    isActive:"false",
+    isActive:false,
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -47,7 +47,7 @@ export default function SignupCard() {
 
       onSubmit: (values, action) => {
         console.log("Form-data", values);
-        values.isActive = "false"
+        values.isActive = false
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         let temp = [];
         if(signupdata !== null){
