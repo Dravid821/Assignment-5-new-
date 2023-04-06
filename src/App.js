@@ -1,27 +1,73 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import Cardmap from "../src/Components/Cardmap";
-import Header from "../src/Components/Header";
-import Carddetail from "./Components/Carddetail";
+import Cardmap from "./view/Cardmap";
+import Header from "./view/Header";
+import Carddetail from "./view/Carddetail";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Login from "./Auth/Login";
-import Signup from "./Auth/Signup";
-import Changepassword from "./Auth/Chagepassword";
-import Profile from "./Auth/Profile";
-import EditProfile from "./Auth/Editprofile"
+import Login from "./Components/Login";
+import Signup from "./Components/Signup";
+import Changepassword from "./Components/Chagepassword";
+import Profile from "./Components/Profile";
+import EditProfile from "./Components/Editprofile";
+import { Fragment } from "react";
+import Protetedroutes from "./app/protetedroutes";
+
 function App() {
   return (
     <div>
       <BrowserRouter>
-      <Header/>
+        {/* <Pagination/> */}
         <Routes>
-          <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/changepass" element={<Changepassword />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/cardmap" element={<Cardmap />} />
           <Route path="/:id" element={<Carddetail />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route exact path="/cardmap" element={<Login />} />
+          <Route element={<Protetedroutes />}>
+            <Route
+              path="/"
+              element={
+                <Fragment>
+                  <Header />
+                  <Cardmap />
+                </Fragment>
+              }
+            />
+            <Route
+              path="/product"
+              element={
+                <Fragment>
+                  <Header />
+                  <Cardmap />
+                </Fragment>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Fragment>
+                  <Header />
+                  <Profile />
+                </Fragment>
+              }
+            />
+            <Route
+              path="/editprofile"
+              element={
+                <Fragment>
+                  <Header />
+                  <EditProfile />
+                </Fragment>
+              }
+            />
+            <Route
+              path="/changepass"
+              element={
+                <Fragment>
+                  <Header />
+                  <Changepassword />
+                </Fragment>
+              }
+            />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

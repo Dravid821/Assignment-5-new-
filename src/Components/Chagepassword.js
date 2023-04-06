@@ -16,8 +16,9 @@ import React,{useState} from "react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { Changepasswordschema } from "./schema/changepasswordschema";
+import { Changepasswordschema } from "../Auth/schema/changepasswordschema";
 import { NavLink } from "react-router-dom";
+import { DecryptData,EncryptData } from "../utils/Encry-Decry";
 const initialValues = {
   current_password: "",
   new_password: "",
@@ -47,12 +48,12 @@ export default function ResetPasswordForm() {
           if (!item.isActive) {
             return item;
           } else {
-            if (item.password === Cpass) {
+            if (DecryptData(item.password) === Cpass) {
               
               if (Npass === Cpass) {
                 toast.error("Opps it's same try with new!");
               } else {
-                item.password = Cpass;
+                item.password =EncryptData(Cpass);
                 item.password = values.confirm_password;
                 localStorage.setItem("signUpData", JSON.stringify(signupdata));
                 toast.success("Password Change Successfully");

@@ -3,10 +3,12 @@ import { Carousel } from "react-responsive-carousel";
 
 const ImageSlider = ({ images }) => {
   return (
-    <Carousel>
+     <Carousel>
+
         {images.map((img) => {
-          return <div><img className="shade" src={img} /></div>;
+          return <img className="shade1" src={img}/>
         })}
+      
     </Carousel>
   );
 };

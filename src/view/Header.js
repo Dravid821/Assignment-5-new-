@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Services/Reducers/reducer";
+import "../redux/Reducers/reducer";
 import { useSelector } from "react-redux";
 import Badge from "@mui/material/Badge";
 // import {
@@ -103,13 +103,13 @@ export default function Navbar(direction,...args) {
                   <DropdownToggle>
                     <Avatar
                       name="Dan Abrahmov"
-                      src="https://bit.ly/dan-abramov"
+                      src="https://www.shutterstock.com/image-vector/user-profile-sign-web-icon-600w-255121297.jpg"
                       height={6}
                       width={6}
                     />
                   </DropdownToggle>
                   <DropdownMenu {...args}>
-                    <NavLink to={"/cardmap"}>
+                    <NavLink to={"/product"}>
                       <DropdownItem>Product</DropdownItem>
                     </NavLink>
                     <hr/>
@@ -122,24 +122,13 @@ export default function Navbar(direction,...args) {
                     <NavLink to={"/changepass"}>
                       <DropdownItem>Change Password</DropdownItem>
                     </NavLink>
-                    <NavLink to={"/login"}>
+                    <NavLink to={"/"}>
                       <DropdownItem onClick={logout}>Logout</DropdownItem>
                     </NavLink>
                   </DropdownMenu>
                 </Dropdown>
               </div>
             ) : null}
-            {/* <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> */}
           </div>
         </div>
       </nav>

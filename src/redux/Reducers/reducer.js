@@ -2,13 +2,15 @@ import {
   FETCH_DATA_SUCCESS,
   FETCH_DATA_COME,
   FETCH_DATA_ERROR,
-  SET_DATA,
-  SET_PAGE,
+  NEXT_PAGE,
+  PREV_PAGE,
+  PAGINATE_DATA
 } from "../Constant";
 const initialState = {
   user: [],
-  currentPage: 1,
-  itemsPerPage: 8,
+  skip: 0,
+  limit: 8,
+  total: 0,
   loading: false,
   err: null,
 };
@@ -21,6 +23,7 @@ export const datareducer = (state = initialState, action) => {
       };
 
     case FETCH_DATA_SUCCESS:
+      console.log(state.user);
       return {
         ...state,
         loading: false,
@@ -33,13 +36,30 @@ export const datareducer = (state = initialState, action) => {
         loading: false,
         err: action.payload,
       };
+      case PAGINATE_DATA :
+        return {
+            ...state,
+            skip: action.skip,
+            limit: action.limit,  
+        }
 
-    case SET_DATA:
-      return { ...state, user: action.payload };
+    case NEXT_PAGE:
+      let pageNumInc = state.page + 1;
 
-    case SET_PAGE:
-      return { ...state, currentPage: action.payload };
+      if (pageNumInc >= state.nbPages) {
+        pageNumInc = 0;
+      }
+      return {
+        ...state,
+        page: pageNumInc,
+      };
 
+    case PREV_PAGE:
+      let pageNum = state.page - 1;
+
+      if (pageNum <= 0) {
+        pageNum = 0;
+      }
     default:
       return {
         ...state,

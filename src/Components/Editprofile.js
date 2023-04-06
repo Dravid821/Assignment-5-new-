@@ -16,7 +16,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { EditSchema } from "./schema/editschema";
+import { EditSchema } from "../Auth/schema/editschema";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -51,24 +51,18 @@ export default function UserProfileEdit() {
       onSubmit: (values, action) => {
         console.log("Form-data", values);
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
+        const activeEmail = signupdata && signupdata.filter((user) => user.isActive === false )
         console.log(signupdata);
         signupdata = signupdata.map((items) => {
           if (!items.isActive) {
             return items;
           } else {
             if (
-              items.first_name === values.first_name &&
-              items.last_name === values.last_name &&
-              items.email === values.email &&
-              items.mobile === values.mobile
+              activeEmail.some((user)=>user.email === values.email)
             ) {
-              toast.error("Data same as Privious Data");
+              toast.error("email Alraddy Exits.");
               return items;
-            } else {
-              if (items.email === values.email) {
-                toast.error("emails Are Same")
-                return items;
-              }else{
+            } else{
                 items.first_name = values.first_name;
                 items.last_name = values.last_name;
                 items.mobile = values.mobile;
@@ -77,7 +71,6 @@ export default function UserProfileEdit() {
               toast.success("Profile Data Update Successfully.");
               navigate("/profile");
               //localStorage.setItem("signUpData", JSON.stringify(items));
-            }
           }
           return items;
         });
@@ -173,7 +166,8 @@ export default function UserProfileEdit() {
                 <p className="form-error">{errors.mobile}</p>
               ) : null}
             </FormControl>
-            <Stack spacing={6} direction={["column", "row"]}>
+            <Stack spacing={6} direction={["column", "row"]} pt={5}>
+              <NavLink to={`/cardmap`}>
               <Button
                 bg={"red.400"}
                 color={"white"}
@@ -184,6 +178,7 @@ export default function UserProfileEdit() {
               >
                 Cancel
               </Button>
+              </NavLink>
               <Button
                 type="submit"
                 bg={"blue.400"}

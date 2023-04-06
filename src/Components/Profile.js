@@ -90,9 +90,7 @@ export default function UserProfileEdit() {
               bg: "red.500",
             }}
           >
-            <NavLink to={'/editprofile'}>
-            Edit
-            </NavLink>
+            <NavLink to={"/editprofile"}>Edit</NavLink>
           </Button>
 
           <Button
