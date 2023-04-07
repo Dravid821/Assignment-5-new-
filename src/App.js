@@ -20,14 +20,15 @@ function App() {
         <Routes>
           <Route path="/:id" element={<Carddetail />} />
           <Route path="/signup" element={<Signup />} />
-          <Route exact path="/" element={<Header/>}/>
+          <Route exact path="/" element={<Header />} />
+          <Route path="/login" element={<Login />} />
           <Route element={<Protetedroutes />}>
             <Route
-              path="/login"
+              path="/log"
               element={
                 <Fragment>
                   <Header />
-                  <Cardmap/>
+                  <Cardmap />
                 </Fragment>
               }
             />
