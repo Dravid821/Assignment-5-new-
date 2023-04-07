@@ -41,23 +41,23 @@ export default function ResetPasswordForm() {
       validateOnChange: true,
       validateOnBlur: false,
       onSubmit: (values, action) => {
-        let Npass = values.new_password;
-        let Cpass = values.current_password;
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
+        const activeUser = signupdata.find((user) => user.isActive === true) || [];
+        console.log("activepass",activeUser)
         signupdata = signupdata.map((item) => {
           if (!item.isActive) {
             return item;
           } else {
-            if (DecryptData(item.password) === Cpass) {
-              
-              if (Npass === Cpass) {
+            if (DecryptData(activeUser.password) === values.current_password) {
+              if (values.current_password === values.new_password) {
                 toast.error("Opps it's same try with new!");
               } else {
-                item.password =EncryptData(Cpass);
-                item.password = values.confirm_password;
-                localStorage.setItem("signUpData", JSON.stringify(signupdata));
                 toast.success("Password Change Successfully");
-                navigate("/login")
+                navigate("/product")
+                return {
+                  ...item,
+                  password:EncryptData(values.new_password),
+                }
               }
             } else {
               toast.error("Incorrect Password");
@@ -66,7 +66,6 @@ export default function ResetPasswordForm() {
           }
         });
         localStorage.setItem("signUpData", JSON.stringify(signupdata));
-        console.log("Form-data", values);
         // let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         // console.log(signupdata);
       },
