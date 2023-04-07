@@ -59,39 +59,7 @@ export default function Navbar(direction,...args) {
               </>
             )}
             {loggin ? (
-              // <Menu >
-              //   {({ isOpen }) => (
-              //     <>
-              //       <MenuButton
-              //         isActive={isOpen}
-              //         as={Button}
-              //         className="bg-dark"
-
-              //       >
-              //         <Avatar
-              //           name="Dan Abrahmov"
-              //           src="https://bit.ly/dan-abramov"
-              //           height={6}
-              //           width={6}
-              //         />
-              //       </MenuButton>
-              //       <MenuList className="right">
-              //       <NavLink to={"/cardmap"}>
-              //           <MenuItem>Product</MenuItem>
-              //         </NavLink>
-              //         <NavLink to={"/profile"}>
-              //           <MenuItem>Profile</MenuItem>
-              //         </NavLink>
-              //         <NavLink to={"/editprofile"}>
-              //           <MenuItem>Edit Profile</MenuItem>
-              //         </NavLink>
-              //         <NavLink to={"/login"}>
-              //           <MenuItem onClick={logout}>Logout</MenuItem>
-              //         </NavLink>
-              //       </MenuList>
-              //     </>
-              //   )}
-              // </Menu>
+  
               <div className="d-flex btn-dark">
                 <Dropdown
                   isOpen={dropdownOpen}
@@ -100,7 +68,7 @@ export default function Navbar(direction,...args) {
                   className=''
                  
                 >
-                  <DropdownToggle>
+                  <DropdownToggle className="btn btn-dark">
                     <Avatar
                       name="Dan Abrahmov"
                       src="https://www.shutterstock.com/image-vector/user-profile-sign-web-icon-600w-255121297.jpg"
