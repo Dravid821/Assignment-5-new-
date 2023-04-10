@@ -167,7 +167,7 @@ export default function UserProfileEdit() {
               ) : null}
             </FormControl>
             <Stack spacing={6} direction={["column", "row"]} pt={5}>
-              <NavLink to={`/product`}>
+              <NavLink to={`/profile`}>
               <Button
                 bg={"red.400"}
                 color={"white"}

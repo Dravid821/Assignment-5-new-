@@ -59,8 +59,7 @@ export default function Cardmap() {
   useEffect(() => {
     dispatch(carddata());
     handleChangePage(0);
-    // dispatch(getData());
-  }, [dispatch]);
+  },[]);
   return (
     //  <h1>{items[0].title}</h1>
     <>

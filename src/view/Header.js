@@ -84,9 +84,6 @@ export default function Navbar(direction,...args) {
                     <NavLink to={"/profile"}>
                       <DropdownItem>Profile</DropdownItem>
                     </NavLink>
-                    <NavLink to={"/editprofile"}>
-                      <DropdownItem>Edit Profile</DropdownItem>
-                    </NavLink>
                     <NavLink to={"/changepass"}>
                       <DropdownItem>Change Password</DropdownItem>
                     </NavLink>

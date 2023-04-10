@@ -47,14 +47,13 @@ export default function Login() {
         if (signupdata !== null) {
           let filter = signupdata.filter((item) => item.email === values.email);
           console.log();
-          if (DecryptData(filter[0].password) === values.password) {
+          if (filter[0] && DecryptData(filter[0].password) === values.password) {
             filter[0].isActive = true;
             localStorage.setItem("isLogin", true);
             toast.success("Login Successfully");
-             navigate("/log")
+             navigate("/")
           } else {
             toast.error("Invalid Data Entered.");
-            action.resetForm();
           }
         } else {
           toast.error("You need To Register First");
@@ -74,14 +73,13 @@ export default function Login() {
           <Stack align={"center"}>
             <Heading fontSize={"4xl"}>Sign in to your account</Heading>
             <Text fontSize={"lg"} color={"gray.600"}>
-              to enjoy all of our cool <Link color={"blue.400"}>features</Link>{" "}
-              ✌️
+        
             </Text>
           </Stack>
           <form onSubmit={handleSubmit}>
             <Box boxShadow={"lg"} p={8}>
               <Stack spacing={4}>
-                <FormControl id="email">
+                <FormControl id="email" isRequired> 
                   <FormLabel>Email address</FormLabel>
                   <Input
                     type="email"
@@ -94,10 +92,10 @@ export default function Login() {
                     onBlur={handleBlur}
                   />
                   {errors.email && touched.email ? (
-                    <p className="form-error">{errors.email}</p>
+                    <p className="text-danger">{errors.email}</p>
                   ) : null}
                 </FormControl>
-                <FormControl id="password">
+                <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                   <Input
@@ -111,7 +109,7 @@ export default function Login() {
                     onBlur={handleBlur}
                   />
                   {errors.password && touched.password ? (
-                    <p className="form-error">{errors.password}</p>
+                    <p className="text-danger">{errors.password}</p>
                   ) : null}{" "}
                   <InputRightElement h={"full"}>
                     <Button
@@ -125,15 +123,12 @@ export default function Login() {
                   </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <Stack spacing={10}>
+                <Stack spacing={3}>
                   <Stack
                     direction={{ base: "column", sm: "row" }}
                     align={"start"}
                     justify={"space-between"}
                   >
-                    <NavLink to={"/changepass"} color={"blue.400"}>
-                      Forgot password?
-                    </NavLink>
                   </Stack>
                   <Button
                     id="submit"

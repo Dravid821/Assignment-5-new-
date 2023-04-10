@@ -49,14 +49,7 @@ export default function UserProfileEdit() {
           <Stack direction={["column", "row"]} spacing={6}>
             <Center>
               <Avatar size="xl" src="../asset/dravid.jpg">
-                <AvatarBadge
-                  as={IconButton}
-                  size="sm"
-                  rounded="full"
-                  top="-10px"
-                  colorScheme="red"
-                  aria-label="remove Image"
-                />
+
               </Avatar>
             </Center>
           </Stack>
@@ -81,7 +74,8 @@ export default function UserProfileEdit() {
           <FormLabel>Mobile No</FormLabel>
           <Input value={item[0].mobile} _placeholder={{ color: "gray.500" }} />
         </FormControl>
-        <Stack spacing={6} direction={["column", "row"]}>
+
+        <NavLink to={"/editprofile"}>
           <Button
             bg={"red.400"}
             color={"white"}
@@ -90,20 +84,21 @@ export default function UserProfileEdit() {
               bg: "red.500",
             }}
           >
-            <NavLink to={"/editprofile"}>Edit</NavLink>
+            Edit
           </Button>
-
-          <Button
-            bg={"blue.400"}
-            color={"white"}
-            w="full"
-            _hover={{
-              bg: "blue.500",
-            }}
-          >
-            <NavLink to={"/cardmap"}>Home</NavLink>
-          </Button>
-        </Stack>
+        </NavLink>
+        <NavLink to={"/product"}>
+        <Button
+          bg={"blue.400"}
+          color={"white"}
+          w="full"
+          _hover={{
+            bg: "blue.500",
+          }}
+        >
+          Home
+        </Button>
+        </NavLink>
       </Stack>
     </Flex>
   );

@@ -11,7 +11,7 @@ import Profile from "./Components/Profile";
 import EditProfile from "./Components/Editprofile";
 import { Fragment } from "react";
 import Protetedroutes from "./app/protetedroutes";
-
+import { Navigate } from "react-router-dom";
 function App() {
   return (
     <div>
@@ -21,14 +21,14 @@ function App() {
           <Route path="/:id" element={<Carddetail />} />
           <Route path="/signup" element={<Signup />} />
           <Route exact path="/" element={<Header />} />
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route element={<Protetedroutes />}>
             <Route
-              path="/log"
+              path="/"
               element={
                 <Fragment>
                   <Header />
-                  <Cardmap />
                 </Fragment>
               }
             />

@@ -77,7 +77,7 @@ export default function ResetPasswordForm() {
           <Heading fontSize={"4xl"}>Change Password</Heading>
         </Stack>
         <form onSubmit={handleSubmit}>
-          <Box boxShadow={"lg"} p={8}>
+          <Box boxShadow={"lg"} p={8} w={[300,400]}>
             <Stack spacing={4}>
               <FormControl id="current_password">
                 <FormLabel>current_password</FormLabel>
@@ -92,7 +92,7 @@ export default function ResetPasswordForm() {
                   onBlur={handleBlur}
                 />
                 {errors.current_password && touched.current_password ? (
-                  <p className="form-error">{errors.current_password}</p>
+                  <p className="text-danger">{errors.current_password}</p>
                 ) : null}
               </FormControl>
               <FormControl id="new_password">
@@ -107,7 +107,7 @@ export default function ResetPasswordForm() {
                   onBlur={handleBlur}
                 />
                 {errors.new_password && touched.new_password ? (
-                  <p className="form-error">{errors.new_password}</p>
+                  <p className="text-danger">{errors.new_password}</p>
                 ) : null}{" "}
               </FormControl>
               <FormControl id="confirm_password">
@@ -122,13 +122,15 @@ export default function ResetPasswordForm() {
                   onBlur={handleBlur}
                 />
                 {errors.confirm_password && touched.confirm_password ? (
-                  <p className="form-error">{errors.confirm_password}</p>
+                  <p className="text-danger">{errors.confirm_password}</p>
                 ) : null}{" "}
               </FormControl>
               <Stack spacing={10}>
+                <NavLink to={`/`}>
                 <Button type="submit" bg={"blue.400"} color={"white"}>
                  Change Password
                 </Button>
+                </NavLink>
               </Stack>
             </Stack>
           </Box>

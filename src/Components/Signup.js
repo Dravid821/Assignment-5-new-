@@ -23,7 +23,7 @@ import { toast } from "react-hot-toast";
 import Cardmap from "../view/Cardmap";
 import { useNavigate } from "react-router-dom";
 import { DecryptData, EncryptData } from "../utils/Encry-Decry";
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 //   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 export default function SignupCard() {
@@ -67,6 +67,7 @@ export default function SignupCard() {
             temp = [...olddata, values];
             localStorage.setItem("signUpData", JSON.stringify(temp));
             toast.success("Account Created Successfully");
+            navigate('/login')
           }
         } else {
           temp.push(values);
@@ -82,19 +83,18 @@ export default function SignupCard() {
   if (!loggin) {
     return (
       <Flex
-        minH={"100vh"}
-        align={"center"}
+        H={"100vh"}
+        minW={"100vw"}
+        align={"cnter"}
         justify={"center"}
         // bg={useColorModeValue("gray.50", "gray.800")}
       >
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>
-              Sign up
+              Sign up Form
             </Heading>
-            <Text fontSize={"lg"} color={"gray.600"}>
-              to enjoy all of our cool features ✌️
-            </Text>
+            <Text fontSize={"lg"} color={"gray.600"}></Text>
           </Stack>
           <form onSubmit={handleSubmit}>
             <Box
@@ -102,46 +102,46 @@ export default function SignupCard() {
               // bg={useColorModeValue("white", "gray.700")}
               boxShadow={"lg"}
               p={8}
+              w={[300,400, 500]}
+             
             >
-              <Stack spacing={4}>
-                <HStack>
-                  <Box>
-                    <FormControl id="first_name" isRequired>
-                      <FormLabel>First Name</FormLabel>
-                      <Input
-                        type="first_name"
-                        autoComplete="off"
-                        name="first_name"
-                        id="first_name"
-                        placeholder="first_name"
-                        value={values.first_name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.first_name && touched.first_name ? (
-                        <p className="form-error">{errors.first_name}</p>
-                      ) : null}
-                    </FormControl>
-                  </Box>
-                  <Box>
-                    <FormControl id="lastName">
-                      <FormLabel>Last Name</FormLabel>
-                      <Input
-                        type="last_name"
-                        autoComplete="off"
-                        name="last_name"
-                        id="last_name"
-                        placeholder="last_name"
-                        value={values.last_name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.last_name && touched.last_name ? (
-                        <p className="form-error">{errors.last_name}</p>
-                      ) : null}
-                    </FormControl>
-                  </Box>
-                </HStack>
+              <Stack spacing={3}>
+                <Box>
+                  <FormControl id="first_name" isRequired>
+                    <FormLabel>First Name</FormLabel>
+                    <Input
+                      type="first_name"
+                      autoComplete="off"
+                      name="first_name"
+                      id="first_name"
+                      placeholder="first_name"
+                      value={values.first_name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.first_name && touched.first_name ? (
+                      <p className="text-danger">{errors.first_name}</p>
+                    ) : null}
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl id="lastName" >
+                    <FormLabel>Last Name</FormLabel>
+                    <Input
+                      type="last_name"
+                      autoComplete="off"
+                      name="last_name"
+                      id="last_name"
+                      placeholder="last_name"
+                      value={values.last_name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.last_name && touched.last_name ? (
+                      <p className="">{errors.last_name}</p>
+                    ) : null}
+                  </FormControl>
+                </Box>
                 <FormControl id="email" isRequired>
                   <FormLabel>Email address</FormLabel>
                   <Input
@@ -155,7 +155,7 @@ export default function SignupCard() {
                     onBlur={handleBlur}
                   />
                   {errors.email && touched.email ? (
-                    <p className="form-error">{errors.email}</p>
+                    <p className="text-danger">{errors.email}</p>
                   ) : null}
                 </FormControl>
                 <FormControl id="mobile" isRequired>
@@ -171,7 +171,7 @@ export default function SignupCard() {
                     onBlur={handleBlur}
                   />
                   {errors.mobile && touched.mobile ? (
-                    <p className="form-error">{errors.mobile}</p>
+                    <p className="text-danger">{errors.mobile}</p>
                   ) : null}
                 </FormControl>
                 <FormControl id="password" isRequired>
@@ -187,19 +187,20 @@ export default function SignupCard() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.password && touched.password ? (
-                      <p className="form-error">{errors.password}</p>
-                    ) : null}{" "}
                     <InputRightElement h={"full"}>
-                       <Button
-                      variant={'ghost'}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }>
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
+                      <Button
+                        variant={"ghost"}
+                        onClick={() =>
+                          setShowPassword((showPassword) => !showPassword)
+                        }
+                      >
+                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
                     </InputRightElement>
                   </InputGroup>
+                  {errors.password && touched.password ? (
+                    <p className="text-danger">{errors.password}</p>
+                  ) : null}{" "}
                 </FormControl>
                 <FormControl id="confirm_password" isRequired>
                   <FormLabel>Confirm Password</FormLabel>
@@ -214,19 +215,21 @@ export default function SignupCard() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.confirm_password && touched.confirm_password ? (
-                      <p className="form-error">{errors.confirm_password}</p>
-                    ) : null}{" "}
+
                     <InputRightElement h={"full"}>
                       <Button
-                      variant={'gho'}
-                      onClick={() =>
-                        setShowcPassword((showcPassword) => !showcPassword)
-                      }>
-                      {showcPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button> 
+                        variant={"gho"}
+                        onClick={() =>
+                          setShowcPassword((showcPassword) => !showcPassword)
+                        }
+                      >
+                        {showcPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
                     </InputRightElement>
                   </InputGroup>
+                  {errors.confirm_password && touched.confirm_password ? (
+                    <p className="text-danger">{errors.confirm_password}</p>
+                  ) : null}{" "}
                 </FormControl>
                 <Stack spacing={10} pt={2}>
                   <Button
