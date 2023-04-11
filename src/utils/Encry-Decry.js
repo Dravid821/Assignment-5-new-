@@ -1,7 +1,6 @@
 import CryptoJS from "crypto-js";
-import { json } from "react-router-dom";
 const secretKey = "Dravid@1234";
-
+//Password Encreption_Decryption
 export const EncryptData = (data) => {
     const encryptext = CryptoJS.AES.encrypt(JSON.stringify(data), secretKey);
     return encryptext.toString();

@@ -4,9 +4,7 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   InputRightElement,
@@ -20,20 +18,13 @@ import { Changepasswordschema } from "../../Validation/schema/changepasswordsche
 import { NavLink } from "react-router-dom";
 import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+// Initial Value Declaration
 const initialValues = {
   current_password: "",
   new_password: "",
   confirm_password: "",
 };
-// const ActiveUser = () => {
-//   let signupdata = JSON.parse(localStorage.getItem("signUpData"));
-//   let ActiveUser =
-//     signupdata && signupdata.filter((user) => user.isActive === true);
-//   return ActiveUser;
-// };
 export default function ResetPasswordForm() {
-  // const [item] = useState(ActiveUser());
-  // console.log(item)
   const [showcurrPassword, setShowcurrPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showcPassword, setShowcPassword] = useState(false);
@@ -45,6 +36,7 @@ export default function ResetPasswordForm() {
       validateOnChange: true,
       validateOnBlur: false,
       onSubmit: (values, action) => {
+        //Password Chacking And Change Password All Condition.
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         const activeUser =
           signupdata.find((user) => user.isActive === true) || [];
@@ -72,8 +64,6 @@ export default function ResetPasswordForm() {
           }
         });
         localStorage.setItem("signUpData", JSON.stringify(signupdata));
-        // let signupdata = JSON.parse(localStorage.getItem("signUpData"));
-        // console.log(signupdata);
       },
     });
   return (

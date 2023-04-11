@@ -1,14 +1,5 @@
 import React, { useState } from "react";
 import "../redux/Reducers/reducer";
-import { useSelector } from "react-redux";
-import Badge from "@mui/material/Badge";
-// import {
-//   Button,
-//   ButtonDropdown,
-//   DropdownItem,
-//   DropdownMenu,
-//   DropdownToggle,
-// } from "reactstrap";
 import {
   Button,
   Dropdown,
@@ -17,10 +8,10 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Menu, MenuButton, MenuList, MenuItem, Avatar } from "@chakra-ui/react";
-export default function Navbar(direction,...args) {
-  // const items = useSelector((state) => state.datareducer.user.products);
+import { Avatar } from "@chakra-ui/react";
+// Navbar 
+export default function Navbar(direction, ...args) {
+  
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   let loggin = JSON.parse(localStorage.getItem("isLogin"));
@@ -39,9 +30,9 @@ export default function Navbar(direction,...args) {
       <nav className="navbar navbar-light bg-dark">
         <div className="container">
           <NavLink style={{ textDecoration: "none" }}>
-            <a className="navbar-brand h4 text-white" color="none">
+            <p className="navbar-brand h4 text-white" color="none">
               Shoppy
-            </a>
+            </p>
           </NavLink>
           <div className="pl-2">
             {loggin ? null : (
@@ -59,14 +50,12 @@ export default function Navbar(direction,...args) {
               </>
             )}
             {loggin ? (
-  
               <div className="d-flex btn-dark">
                 <Dropdown
                   isOpen={dropdownOpen}
                   toggle={toggle}
                   direction={direction}
-                  className=''
-                 
+                  className=""
                 >
                   <DropdownToggle className="btn btn-dark">
                     <Avatar
@@ -80,7 +69,7 @@ export default function Navbar(direction,...args) {
                     <NavLink to={"/product"}>
                       <DropdownItem>Product</DropdownItem>
                     </NavLink>
-                    <hr/>
+                    <hr />
                     <NavLink to={"/profile"}>
                       <DropdownItem>Profile</DropdownItem>
                     </NavLink>
@@ -100,6 +89,3 @@ export default function Navbar(direction,...args) {
     </>
   );
 }
-// Navbar.propTypes = {
-//   direction: PropTypes.string,
-// };

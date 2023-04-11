@@ -8,10 +8,7 @@ import {
   Input,
   Stack,
   useColorModeValue,
-  HStack,
   Avatar,
-  AvatarBadge,
-  IconButton,
   Center,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";

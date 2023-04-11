@@ -4,7 +4,7 @@ import {
   FETCH_DATA_ERROR,
   NEXT_PAGE,
   PREV_PAGE,
-  PAGINATE_DATA
+  PAGINATE_DATA,
 } from "../Constant";
 const initialState = {
   user: [],
@@ -36,12 +36,12 @@ export const datareducer = (state = initialState, action) => {
         loading: false,
         err: action.payload,
       };
-      case PAGINATE_DATA :
-        return {
-            ...state,
-            skip: action.skip,
-            limit: action.limit,  
-        }
+    case PAGINATE_DATA:
+      return {
+        ...state,
+        skip: action.skip,
+        limit: action.limit,
+      };
 
     case NEXT_PAGE:
       let pageNumInc = state.page + 1;

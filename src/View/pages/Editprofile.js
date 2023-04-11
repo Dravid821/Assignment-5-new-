@@ -9,14 +9,9 @@ import {
   Stack,
   Box,
   useColorModeValue,
-  HStack,
-  Avatar,
-  AvatarBadge,
-  IconButton,
-  Center,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { EditSchema } from "../Validation/schema/editschema";
+import { EditSchema } from "../../Validation/schema/editschema";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +26,6 @@ let signupdata = JSON.parse(localStorage.getItem("signUpData"));
 console.log(signupdata);
 export default function UserProfileEdit() {
   const [item] = useState(ActiveUser());
-  const [email, setEmail] = useState('');
   const navigate = useNavigate();
   console.log("item 0", item);
   const initialValues = {

@@ -6,23 +6,20 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   Button,
   Heading,
   Text,
-  useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import { signupSchema } from "../../Validation/schema/signupschema";
 import { NavLink } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 import { toast } from "react-hot-toast";
-import Cardmap from "../pages/Cardmap";
+import Cardmap from "../../Components/Cardmap";
 import { useNavigate } from "react-router-dom";
-import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
+import {  EncryptData } from "../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 //   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
@@ -52,6 +49,7 @@ export default function SignupCard() {
 
       onSubmit: (values, action) => {
         console.log("Form-data", values);
+        //form submission for the signup form. 
         values.password = EncryptData(values.password);
         values.confirm_password = EncryptData(values.confirm_password);
         values.isActive = false;

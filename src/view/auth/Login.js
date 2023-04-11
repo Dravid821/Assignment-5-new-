@@ -5,23 +5,20 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   InputRightElement,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
-  useColorModeValue,
   InputGroup,
 } from "@chakra-ui/react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { loginSchema } from "../../Validation/schema/loginschema";
 import { useNavigate } from "react-router-dom";
-import Cardmap from "../pages/Cardmap";
+
 import { NavLink } from "react-router-dom";
-import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
+import { DecryptData } from "../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const initialValues = {
@@ -41,6 +38,7 @@ export default function Login() {
 
       onSubmit: (values, action) => {
         console.log("Form-data", values);
+        //form submission for the Login form. 
         values.isActive = "false";
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
         console.log(signupdata);

@@ -1,19 +1,18 @@
-// import logo from "./logo.svg";
 import "./App.css";
-import Cardmap from "./view/pages/Cardmap";
+import Cardmap from "./Components/Cardmap";
 import Header from "./Components/Header";
 import Carddetail from "./Components/Carddetail";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Login from "./view/auth/Login";
-import Signup from "./view/auth/Signup";
-import Changepassword from "./view/auth/Chagepassword";
-import Profile from "./Components/Profile";
-import EditProfile from "./Components/Editprofile";
+import Login from "./View/auth/Login";
+import Signup from "./View/auth/Signup";
+import Changepassword from "./View/auth/Chagepassword";
+import Profile from "./View/pages/Profile";
+import EditProfile from "./View/pages/Editprofile";
 import { Fragment } from "react";
 import Protetedroutes from "./app/protetedroutes";
-import { Navigate } from "react-router-dom";
 function App() {
   return (
+    // Public and Public Both Routes.
     <div>
       <BrowserRouter>
         {/* <Pagination/> */}

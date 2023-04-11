@@ -1,3 +1,4 @@
+//Change Password Page All Validation
 import * as Yup from "yup";
 export const Changepasswordschema = Yup.object({
   current_password: Yup.string()

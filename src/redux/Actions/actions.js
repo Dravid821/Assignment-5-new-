@@ -29,6 +29,7 @@ export const setPage = (page) => {
     payload: page,
   };
 };
+//Api data fetch
 export const carddata = (skip) => {
   return (dispatch) => {
     dispatch(fetchcome());

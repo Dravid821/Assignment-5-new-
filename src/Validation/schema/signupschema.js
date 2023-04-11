@@ -1,5 +1,5 @@
+// Signup  Page All VAlidation
 import * as Yup from "yup";
-
 export const signupSchema = Yup.object({
   first_name: Yup.string().min(2).max(25).required("first Name is Required"),
   last_name: Yup.string(),

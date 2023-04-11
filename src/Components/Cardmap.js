@@ -1,59 +1,31 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Spinner } from "@chakra-ui/react";
 import Spinner from "react-bootstrap/Spinner";
 import StarIcon from "@mui/icons-material/Star";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardFooter,
-  CardImg,
-} from "reactstrap";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
-import carddata, { setPage } from "../../redux/Actions/actions";
+import carddata from "../redux/Actions/actions";
 import { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 export default function Cardmap() {
   const items = useSelector((state) => state.datareducer.user);
-  // const currentPage = useSelector(state => state.datareducer.currentPage);
-  // const itemsPerPage = useSelector(state => state.datareducer.itemsPerPage);
-  const data = useSelector((state) => state.datareducer.user);
+
   const [active, setActive] = useState(0);
   const totalPages = Math.ceil(100 / 8); // Total number of pages
   const prevPage = active > 1 ? active - 1 : null; // Previous page number
   const nextPage = active < totalPages ? active + 1 : null; // Next page number
-  // const totalPages = Math.ceil(data.length / itemsPerPage);
   console.log("items", items);
   const dispatch = useDispatch();
 
-  // const handleChangePage = (page) => {
-  //   dispatch(setPage(page));
-  // };
   const handleChangePage = (number) => {
     setActive(number);
     dispatch(carddata(number * 8));
   };
-  // const getData = async () => {
-  //   await dispatch(fetchsuccess({ postsPerPage, currentPage }));
-  // };
+  //Add Pagination Funcnality
   let pagesitem = [];
   if (prevPage) {
     pagesitem.push(
-      <Pagination.Prev
-        key="prev"
-        onClick={() => handleChangePage(prevPage)}
-      />
+      <Pagination.Prev key="prev" onClick={() => handleChangePage(prevPage)} />
     );
   }
   let startPage = Math.max(1, active - 1); // Start page number
@@ -71,15 +43,13 @@ export default function Cardmap() {
   }
   if (nextPage) {
     pagesitem.push(
-      <Pagination.Next
-        key="next"
-        onClick={() => handleChangePage(nextPage)}
-      />
+      <Pagination.Next key="next" onClick={() => handleChangePage(nextPage)} />
     );
   }
   useEffect(() => {
     handleChangePage(0);
   }, []);
+  //Product Data Map
   return (
     //  <h1>{items[0].title}</h1>
     <>
@@ -151,13 +121,6 @@ export default function Cardmap() {
             })
           ) : (
             <div className="text-center">
-              {/* <Spinner
-                thickness="20px"
-                speed="0.90s"
-                emptyColor="white.500"
-                color="blue.500"
-                size="xl"
-              /> */}
               <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
               </Spinner>

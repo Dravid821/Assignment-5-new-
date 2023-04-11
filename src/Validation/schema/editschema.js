@@ -1,3 +1,4 @@
+//Edit Profile Page All Validation
 import * as Yup from "yup";
 export const EditSchema = Yup.object({
   first_name: Yup.string().min(2).max(25).required("Please enter your name"),
