@@ -107,7 +107,7 @@ export default function SignupCard() {
             >
               <Stack spacing={3}>
                 <Box>
-                  <FormControl id="first_name" isRequired>
+                  <FormControl id="first_name" >
                     <FormLabel>First Name</FormLabel>
                     <Input
                       type="first_name"
@@ -142,7 +142,7 @@ export default function SignupCard() {
                     ) : null}
                   </FormControl>
                 </Box>
-                <FormControl id="email" isRequired>
+                <FormControl id="email" >
                   <FormLabel>Email address</FormLabel>
                   <Input
                     type="email"
@@ -158,7 +158,7 @@ export default function SignupCard() {
                     <p className="text-danger">{errors.email}</p>
                   ) : null}
                 </FormControl>
-                <FormControl id="mobile" isRequired>
+                <FormControl id="mobile" >
                   <FormLabel>Mobile No.</FormLabel>
                   <Input
                     type="mobile"
@@ -174,7 +174,7 @@ export default function SignupCard() {
                     <p className="text-danger">{errors.mobile}</p>
                   ) : null}
                 </FormControl>
-                <FormControl id="password" isRequired>
+                <FormControl id="password" >
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
@@ -202,7 +202,7 @@ export default function SignupCard() {
                     <p className="text-danger">{errors.password}</p>
                   ) : null}{" "}
                 </FormControl>
-                <FormControl id="confirm_password" isRequired>
+                <FormControl id="confirm_password" >
                   <FormLabel>Confirm Password</FormLabel>
                   <InputGroup>
                     <Input

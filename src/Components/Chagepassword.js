@@ -12,13 +12,13 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Changepasswordschema } from "../Auth/schema/changepasswordschema";
 import { NavLink } from "react-router-dom";
-import { DecryptData,EncryptData } from "../utils/Encry-Decry";
+import { DecryptData, EncryptData } from "../utils/Encry-Decry";
 const initialValues = {
   current_password: "",
   new_password: "",
@@ -42,8 +42,9 @@ export default function ResetPasswordForm() {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         let signupdata = JSON.parse(localStorage.getItem("signUpData"));
-        const activeUser = signupdata.find((user) => user.isActive === true) || [];
-        console.log("activepass",activeUser)
+        const activeUser =
+          signupdata.find((user) => user.isActive === true) || [];
+        console.log("activepass", activeUser);
         signupdata = signupdata.map((item) => {
           if (!item.isActive) {
             return item;
@@ -53,11 +54,12 @@ export default function ResetPasswordForm() {
                 toast.error("Opps it's same try with new!");
               } else {
                 toast.success("Password Change Successfully");
-                navigate("/product")
+                item.isActive= false;
+                navigate("/header");
                 return {
                   ...item,
-                  password:EncryptData(values.new_password),
-                }
+                  password: EncryptData(values.new_password),
+                };
               }
             } else {
               toast.error("Incorrect Password");
@@ -77,7 +79,7 @@ export default function ResetPasswordForm() {
           <Heading fontSize={"4xl"}>Change Password</Heading>
         </Stack>
         <form onSubmit={handleSubmit}>
-          <Box boxShadow={"lg"} p={8} w={[300,400]}>
+          <Box boxShadow={"lg"} p={8} w={[300, 400]}>
             <Stack spacing={4}>
               <FormControl id="current_password">
                 <FormLabel>current_password</FormLabel>
@@ -125,12 +127,15 @@ export default function ResetPasswordForm() {
                   <p className="text-danger">{errors.confirm_password}</p>
                 ) : null}{" "}
               </FormControl>
-              <Stack spacing={10}>
-                <NavLink to={`/`}>
-                <Button type="submit" bg={"blue.400"} color={"white"}>
-                 Change Password
-                </Button>
+              <Stack spacing={10} direction={["column", "row"]} pt={3}>
+                <NavLink to='/product'>
+                  <Button type="submit" bg={"blue.400"} color={"white"} className="bg-danger">
+                    Cancel
+                  </Button>
                 </NavLink>
+                <Button type="submit" bg={"blue.400"} color={"white"}>
+                  Change Password
+                </Button>
               </Stack>
             </Stack>
           </Box>

@@ -30,6 +30,9 @@ export default function Cardmap() {
   // const itemsPerPage = useSelector(state => state.datareducer.itemsPerPage);
   const data = useSelector((state) => state.datareducer.user);
   const [active, setActive] = useState(0);
+  const totalPages = Math.ceil(100 / 8); // Total number of pages
+  const prevPage = active > 1 ? active - 1 : null; // Previous page number
+  const nextPage = active < totalPages ? active + 1 : null; // Next page number
   // const totalPages = Math.ceil(data.length / itemsPerPage);
   console.log("items", items);
   const dispatch = useDispatch();
@@ -45,7 +48,17 @@ export default function Cardmap() {
   //   await dispatch(fetchsuccess({ postsPerPage, currentPage }));
   // };
   let pagesitem = [];
-  for (let number = 0; number < 100 / 8; number++) {
+  if (prevPage) {
+    pagesitem.push(
+      <Pagination.Prev
+        key="prev"
+        onClick={() => handleChangePage(prevPage)}
+      />
+    );
+  }
+  let startPage = Math.max(1, active - 1); // Start page number
+  let endPage = Math.min(totalPages, startPage + 2); // End page number
+  for (let number = startPage; number <= endPage; number++) {
     pagesitem.push(
       <Pagination.Item
         key={number}
@@ -56,10 +69,18 @@ export default function Cardmap() {
       </Pagination.Item>
     );
   }
+  if (nextPage) {
+    pagesitem.push(
+      <Pagination.Next
+        key="next"
+        onClick={() => handleChangePage(nextPage)}
+      />
+    );
+  }
   useEffect(() => {
     dispatch(carddata());
     handleChangePage(0);
-  },[]);
+  }, []);
   return (
     //  <h1>{items[0].title}</h1>
     <>

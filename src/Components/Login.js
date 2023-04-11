@@ -51,7 +51,7 @@ export default function Login() {
             filter[0].isActive = true;
             localStorage.setItem("isLogin", true);
             toast.success("Login Successfully");
-             navigate("/")
+             navigate("/header")
           } else {
             toast.error("Invalid Data Entered.");
           }
@@ -62,8 +62,7 @@ export default function Login() {
         }
         // console.log("string",JSON.stringify(values))
         // console.log("object",JSON.parse(values))
-        localStorage.setItem("signUpData", JSON.stringify(signupdata));
-        action.resetForm();
+        localStorage.setItem("signUpData", JSON.stringify(signupdata))
       },
     });
   if (!loggin) {
@@ -79,7 +78,7 @@ export default function Login() {
           <form onSubmit={handleSubmit}>
             <Box boxShadow={"lg"} p={8}>
               <Stack spacing={4}>
-                <FormControl id="email" isRequired> 
+                <FormControl id="email" > 
                   <FormLabel>Email address</FormLabel>
                   <Input
                     type="email"
@@ -95,7 +94,7 @@ export default function Login() {
                     <p className="text-danger">{errors.email}</p>
                   ) : null}
                 </FormControl>
-                <FormControl id="password" isRequired>
+                <FormControl id="password">
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                   <Input
@@ -108,9 +107,7 @@ export default function Login() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {errors.password && touched.password ? (
-                    <p className="text-danger">{errors.password}</p>
-                  ) : null}{" "}
+                  
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}
@@ -122,6 +119,9 @@ export default function Login() {
                     </Button>
                   </InputRightElement>
                   </InputGroup>
+                  {errors.password && touched.password ? (
+                    <p className="text-danger">{errors.password}</p>
+                  ) : null}{" "}
                 </FormControl>
                 <Stack spacing={3}>
                   <Stack
@@ -139,6 +139,7 @@ export default function Login() {
                       bg: "blue.500",
                     }}
                   >
+      
                     Sign in
                   </Button>
                   <Stack>
@@ -157,6 +158,6 @@ export default function Login() {
       </Flex>
     );
   } else {
-    return <Cardmap />;
+    return ;
   }
 }
