@@ -16,13 +16,13 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { signupSchema } from "../Auth/schema/signupschema";
+import { signupSchema } from "../../Validation/schema/signupschema";
 import { NavLink } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { toast } from "react-hot-toast";
-import Cardmap from "../view/Cardmap";
+import Cardmap from "../pages/Cardmap";
 import { useNavigate } from "react-router-dom";
-import { DecryptData, EncryptData } from "../utils/Encry-Decry";
+import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 //   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
@@ -67,7 +67,7 @@ export default function SignupCard() {
             temp = [...olddata, values];
             localStorage.setItem("signUpData", JSON.stringify(temp));
             toast.success("Account Created Successfully");
-            navigate('/login')
+            navigate('/')
           }
         } else {
           temp.push(values);

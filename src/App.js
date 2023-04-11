@@ -1,12 +1,12 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import Cardmap from "./view/Cardmap";
-import Header from "./view/Header";
-import Carddetail from "./view/Carddetail";
+import Cardmap from "./view/pages/Cardmap";
+import Header from "./Components/Header";
+import Carddetail from "./Components/Carddetail";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Login from "./Components/Login";
-import Signup from "./Components/Signup";
-import Changepassword from "./Components/Chagepassword";
+import Login from "./view/auth/Login";
+import Signup from "./view/auth/Signup";
+import Changepassword from "./view/auth/Chagepassword";
 import Profile from "./Components/Profile";
 import EditProfile from "./Components/Editprofile";
 import { Fragment } from "react";

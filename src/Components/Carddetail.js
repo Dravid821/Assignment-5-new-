@@ -29,7 +29,7 @@ import {
 } from "mdb-react-ui-kit";
 // import Carousel from "react-bootstrap/Carousel";
 
-import ImageSlider from "../Components/ImageSlider";
+import ImageSlider from "./ImageSlider";
 import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

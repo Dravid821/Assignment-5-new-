@@ -21,7 +21,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
-import carddata, { setPage } from "../redux/Actions/actions";
+import carddata, { setPage } from "../../redux/Actions/actions";
 import { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 export default function Cardmap() {
@@ -78,7 +78,6 @@ export default function Cardmap() {
     );
   }
   useEffect(() => {
-    dispatch(carddata());
     handleChangePage(0);
   }, []);
   return (

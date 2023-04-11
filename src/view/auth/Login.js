@@ -17,11 +17,11 @@ import {
 } from "@chakra-ui/react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
-import { loginSchema } from "../Auth/schema/loginschema";
+import { loginSchema } from "../../Validation/schema/loginschema";
 import { useNavigate } from "react-router-dom";
-import Cardmap from "../view/Cardmap";
+import Cardmap from "../pages/Cardmap";
 import { NavLink } from "react-router-dom";
-import { DecryptData, EncryptData } from "../utils/Encry-Decry";
+import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const initialValues = {
@@ -107,7 +107,6 @@ export default function Login() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}

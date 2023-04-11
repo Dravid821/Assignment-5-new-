@@ -9,16 +9,17 @@ import {
   Link,
   Button,
   Heading,
-  Text,
-  useColorModeValue,
+  InputRightElement,
+  InputGroup,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { Changepasswordschema } from "../Auth/schema/changepasswordschema";
+import { Changepasswordschema } from "../../Validation/schema/changepasswordschema";
 import { NavLink } from "react-router-dom";
-import { DecryptData, EncryptData } from "../utils/Encry-Decry";
+import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 const initialValues = {
   current_password: "",
   new_password: "",
@@ -33,6 +34,9 @@ const initialValues = {
 export default function ResetPasswordForm() {
   // const [item] = useState(ActiveUser());
   // console.log(item)
+  const [showcurrPassword, setShowcurrPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showcPassword, setShowcPassword] = useState(false);
   const navigate = useNavigate();
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -83,8 +87,9 @@ export default function ResetPasswordForm() {
             <Stack spacing={4}>
               <FormControl id="current_password">
                 <FormLabel>current_password</FormLabel>
+                <InputGroup>
                 <Input
-                  type="current_password"
+                  type={showcurrPassword ? "text" : "password"}
                   autoComplete="off"
                   name="current_password"
                   id="current_password"
@@ -93,14 +98,27 @@ export default function ResetPasswordForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowcurrPassword((showcurrPassword) => !showcurrPassword)
+                      }
+                    >
+                      {showcurrPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                  </InputGroup>
                 {errors.current_password && touched.current_password ? (
                   <p className="text-danger">{errors.current_password}</p>
                 ) : null}
               </FormControl>
               <FormControl id="new_password">
                 <FormLabel>new_password</FormLabel>
+                <InputGroup>
                 <Input
                   autoComplete="off"
+                  type={showPassword ? "text" : "password"}
                   name="new_password"
                   id="new_password"
                   placeholder="new_password"
@@ -108,21 +126,45 @@ export default function ResetPasswordForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                  </InputGroup>
                 {errors.new_password && touched.new_password ? (
                   <p className="text-danger">{errors.new_password}</p>
                 ) : null}{" "}
               </FormControl>
               <FormControl id="confirm_password">
                 <FormLabel>confirm_password</FormLabel>
+                <InputGroup>
                 <Input
                   autoComplete="off"
                   name="confirm_password"
                   id="confirm_password"
+                  type={showcPassword ? "text" : "password"}
                   placeholder="confirm_password"
                   value={values.confirm_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                <InputRightElement h={"full"}>
+                      <Button
+                        variant={"gho"}
+                        onClick={() =>
+                          setShowcPassword((showcPassword) => !showcPassword)
+                        }
+                      >
+                        {showcPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
                 {errors.confirm_password && touched.confirm_password ? (
                   <p className="text-danger">{errors.confirm_password}</p>
                 ) : null}{" "}

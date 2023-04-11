@@ -16,7 +16,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { EditSchema } from "../Auth/schema/editschema";
+import { EditSchema } from "../Validation/schema/editschema";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
