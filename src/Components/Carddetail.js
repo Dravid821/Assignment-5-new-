@@ -10,7 +10,6 @@ import "../asset/scss/carddetail.scss";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import Card from 'react-bootstrap/Card';
 const Carddetail = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
