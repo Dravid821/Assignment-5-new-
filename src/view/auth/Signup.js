@@ -65,12 +65,13 @@ export default function SignupCard() {
             temp = [...olddata, values];
             localStorage.setItem("signUpData", JSON.stringify(temp));
             toast.success("Account Created Successfully");
-            navigate('/')
+            navigate('/login')
           }
         } else {
           temp.push(values);
           localStorage.setItem("signUpData", JSON.stringify(temp));
           toast.success("Account Created Successfully");
+          navigate('/login')
         }
         // console.log("string",JSON.stringify(values))
         // console.log("object",JSON.parse(values))

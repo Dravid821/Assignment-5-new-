@@ -16,7 +16,7 @@ const Carddetail = () => {
   const navigate = useNavigate();
   console.log(data);
   console.log(data.images);
-//Product detail page Api Fetching
+  //Product detail page Api Fetching
   useEffect(() => {
     axios
       .get(` https://dummyjson.com/products/${id}`)
@@ -39,9 +39,92 @@ const Carddetail = () => {
         {data.title ? (
           <section>
             <div className="container">
-              <div className="row justify-content-center">
+              <div className="row pt-5">
+                <div className="col-md-6 col-sm-12 ">
+                  <Carousel>
+                    {data.images.map((item, i) => {
+                      return (
+                        <Carousel.Item key={i}>
+                          <img
+                            className="d-block w-100 caraimg"
+                            src={item}
+                            alt="First slide"
+                          />
+                        </Carousel.Item>
+                      );
+                    })}
+                  </Carousel>
+                </div>
+                <div className="col-md-6 col-sm-12 mt-4">
+                  <div className="col-md-12 col-sm-12">
+                    <div className="card-body">
+                      <div class="text-start">
+                        <h1 className="card-title">{data.category}</h1>
+                        <div className="pt-3">
+                          <h5 className="text-danger mb-4">{data.brand}</h5>
+                          <p className="text-success mb-4">{data.title}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex">
+                          <span className="">Stock:</span>
+                          <span>{data.stock}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                          <span>
+                            <span class="badge bg-success">
+                              <div>
+                                {data.rating}
+                                <StarIcon />
+                              </div>
+                            </span>
+                          </span>
+                          {/* <span>Rating :&nbsp;</span> */}
+                          <span className="text-warning"></span>
+                        </div>
+                        <div class="d-flex  total font-weight-bold mt-4">
+                          <span>Discount :&nbsp;</span>
+                          <h6>{data.discountPercentage}% off</h6>
+                        </div>
+                        <div class="d-flex total font-weight-bold mt-4">
+                          <span>Price :</span>
+                          <h4 className="mb-1 me-1">${data.price}</h4>
+                        </div>
+                      </div>
+                      <div class="d-flex  total font-weight-bold mt-4">
+                        <span>Description :&nbsp;{data.description}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-12 col-sm-12 ">
+                    <div className="pt-5">
+                      <NavLink>
+                        <button
+                          className="btn btn-primary btn-md m-2"
+                          type="button"
+                        >
+                          Add To Cart
+                        </button>
+                      </NavLink>
+                      <NavLink to={`/product`}>
+                        <button
+                          onClick={BackToShop}
+                          className="btn btn-outline-primary btn-md m-2"
+                          type="button"
+                        >
+                          <ShoppingCartIcon />
+                          Back To Shopping Page
+                        </button>
+                      </NavLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className="container">
+              <div className="row">
                 <div className="col-12 col-md-6 col-lg-">
-                  <div className="card text-black">
+                  <div className="card text-black d-flex">
                     <Carousel>
                       {data.images.map((item, i) => {
                         return (
@@ -55,7 +138,7 @@ const Carddetail = () => {
                         );
                       })}
                     </Carousel>
-                    {/* <ImageSlider images={data.images} className="img-fluid" /> */}
+                    <div className="d-flex">
                     <div className="card-body">
                       <div class="text-center">
                         <h1 className="card-title">{data.category}</h1>
@@ -92,6 +175,7 @@ const Carddetail = () => {
                         <h4 className="mb-1 me-1">$13.99</h4>
                       </div>
                     </div>
+                    </div>
                     <div className="d-flex justify-content-between">
                       <NavLink>
                         <button
@@ -115,7 +199,7 @@ const Carddetail = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </section>
         ) : (
           <div className="text-center">

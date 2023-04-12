@@ -49,7 +49,7 @@ export default function Login() {
             filter[0].isActive = true;
             localStorage.setItem("isLogin", true);
             toast.success("Login Successfully");
-             navigate("/header")
+             navigate("/product")
           } else {
             toast.error("Invalid Data Entered.");
           }

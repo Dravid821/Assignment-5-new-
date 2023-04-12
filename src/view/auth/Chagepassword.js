@@ -49,9 +49,11 @@ export default function ResetPasswordForm() {
               if (values.current_password === values.new_password) {
                 toast.error("Opps it's same try with new!");
               } else {
+                item.isActive = false;
+                localStorage.setItem("isLogin", false);
+                localStorage.setItem("signUpData", JSON.stringify(signupdata));
                 toast.success("Password Change Successfully");
-                item.isActive= false;
-                navigate("/header");
+                navigate('/login')
                 return {
                   ...item,
                   password: EncryptData(values.new_password),

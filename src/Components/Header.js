@@ -9,13 +9,18 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
-// Navbar 
+const ActiveUser = () => {
+  let signupdata = JSON.parse(localStorage.getItem("signUpData"));
+  let ActiveUser =
+    signupdata && signupdata.filter((user) => user.isActive === true);
+  return ActiveUser;
+};
+// Navbar
 export default function Navbar(direction, ...args) {
-  
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   let loggin = JSON.parse(localStorage.getItem("isLogin"));
-
+  const [item] = useState(ActiveUser());
   const logout = () => {
     localStorage.setItem("isLogin", false);
     let signupdata = JSON.parse(localStorage.getItem("signUpData"));
@@ -28,7 +33,7 @@ export default function Navbar(direction, ...args) {
   return (
     <>
       <nav className="navbar navbar-light bg-dark">
-        <div className="container">
+        <div className="container-fluid">
           <NavLink style={{ textDecoration: "none" }}>
             <p className="navbar-brand h4 text-white" color="none">
               Shoppy
@@ -51,6 +56,7 @@ export default function Navbar(direction, ...args) {
             )}
             {loggin ? (
               <div className="d-flex btn-dark">
+                <span className="text-white pt-2">{item[0].first_name}</span>
                 <Dropdown
                   isOpen={dropdownOpen}
                   toggle={toggle}
@@ -66,9 +72,6 @@ export default function Navbar(direction, ...args) {
                     />
                   </DropdownToggle>
                   <DropdownMenu {...args}>
-                    <NavLink to={"/product"}>
-                      <DropdownItem>Product</DropdownItem>
-                    </NavLink>
                     <hr />
                     <NavLink to={"/profile"}>
                       <DropdownItem>Profile</DropdownItem>

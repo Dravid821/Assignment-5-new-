@@ -4,7 +4,7 @@ import {
   FETCH_DATA_COME,
   FETCH_DATA_ERROR,
 } from "../Constant";
-let url =(skip=0)=> `https://dummyjson.com/products?limit=8&skip=${skip}`;
+let url =(skip=1)=> `https://dummyjson.com/products?limit=8&skip=${skip}`;
 
 export const fetchcome = () => {
   return {

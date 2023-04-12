@@ -17,16 +17,17 @@ function App() {
       <BrowserRouter>
         {/* <Pagination/> */}
         <Routes>
-          <Route path="/:id" element={<Carddetail />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/:id" element={<Carddetail />} />
+          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/header" element={<Header />} />
           <Route element={<Protetedroutes />}>
-            <Route exact path="/header" element={<Header />} />
             <Route
-              path="/login"
+              path="/log"
               element={
                 <Fragment>
-                  <Header />
+                  <Login />
                 </Fragment>
               }
             />

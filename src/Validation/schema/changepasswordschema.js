@@ -5,8 +5,7 @@ export const Changepasswordschema = Yup.object({
     .matches()
     .required("Please Enter Your Password"),
   new_password: Yup.string()
-    .matches()
-    .min(8)
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
     .required("Please Enter New Password"),
   confirm_password: Yup.string()
     .required()
