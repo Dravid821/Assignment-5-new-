@@ -97,7 +97,7 @@ export default function SignupCard() {
             <Stack spacing={3}>
               <Box>
                 <FormControl id="first_name">
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>First Name&nbsp;<span className="text-danger">*</span></FormLabel>
                   <Input
                     type="first_name"
                     autoComplete="off"
@@ -132,7 +132,7 @@ export default function SignupCard() {
                 </FormControl>
               </Box>
               <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
+                <FormLabel>Email address&nbsp;<span className="text-danger">*</span></FormLabel>
                 <Input
                   type="email"
                   autoComplete="off"
@@ -148,7 +148,7 @@ export default function SignupCard() {
                 ) : null}
               </FormControl>
               <FormControl id="mobile">
-                <FormLabel>Mobile No.</FormLabel>
+                <FormLabel>Mobile No.&nbsp;<span className="text-danger">*</span></FormLabel>
                 <Input
                   type="mobile"
                   autoComplete="off"
@@ -164,7 +164,7 @@ export default function SignupCard() {
                 ) : null}
               </FormControl>
               <FormControl id="password">
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Password&nbsp;<span className="text-danger">*</span></FormLabel>
                 <InputGroup>
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -192,7 +192,7 @@ export default function SignupCard() {
                 ) : null}{" "}
               </FormControl>
               <FormControl id="confirm_password">
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel>Confirm Password&nbsp;<span className="text-danger">*</span></FormLabel>
                 <InputGroup>
                   <Input
                     type={showcPassword ? "text" : "password"}

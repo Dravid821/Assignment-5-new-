@@ -12,6 +12,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import { Hidden } from "@mui/material";
 const ActiveUser = () => {
   let signupdata = JSON.parse(localStorage.getItem("signUpData"));
   let ActiveUser =
@@ -45,29 +46,29 @@ export default function UserProfileEdit() {
           <FormLabel>User Icon</FormLabel>
           <Stack direction={["column", "row"]} spacing={6}>
             <Center>
-              <Avatar size="xl" src="../asset/dravid.jpg">
-
-              </Avatar>
+              <Avatar size="xl" src="../asset/dravid.jpg"></Avatar>
             </Center>
           </Stack>
         </FormControl>
-        <FormControl id="userName" isRequired>
+        <FormControl id="firstname">
           <FormLabel>First Name</FormLabel>
-          <Input value={item[0].first_name} />
+          <Input
+            value={item[0].first_name}
+          />
         </FormControl>
-        <FormControl id="userName" isRequired>
+        <FormControl id="lastname">
           <FormLabel>Last Name</FormLabel>
           <Input value={item[0].last_name} />
         </FormControl>
-        <FormControl id="email" isRequired>
-          <FormLabel>Email address</FormLabel>
+        <FormControl id="email">
+          <FormLabel>Email Address</FormLabel>
           <Input
             value={item[0].email}
             _placeholder={{ color: "gray.500" }}
             type="email"
           />
         </FormControl>
-        <FormControl id="password" isRequired>
+        <FormControl id="password">
           <FormLabel>Mobile No</FormLabel>
           <Input value={item[0].mobile} _placeholder={{ color: "gray.500" }} />
         </FormControl>
@@ -85,16 +86,16 @@ export default function UserProfileEdit() {
           </Button>
         </NavLink>
         <NavLink to={"/product"}>
-        <Button
-          bg={"blue.400"}
-          color={"white"}
-          w="full"
-          _hover={{
-            bg: "blue.500",
-          }}
-        >
-          Home
-        </Button>
+          <Button
+            bg={"blue.400"}
+            color={"white"}
+            w="full"
+            _hover={{
+              bg: "blue.500",
+            }}
+          >
+            Home
+          </Button>
         </NavLink>
       </Stack>
     </Flex>

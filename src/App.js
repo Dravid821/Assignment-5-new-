@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route path="*" element={<Error />} />
             <Route element={<Protetedroutes />}>
-              <Route path="/:id" element={<Carddetail />} />
+              <Route path="product/:id" element={<Carddetail />} />
               <Route
                 path="/product"
                 element={

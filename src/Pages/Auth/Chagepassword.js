@@ -80,14 +80,14 @@ export default function ResetPasswordForm() {
           <Box boxShadow={"lg"} p={8} w={[300, 400]}>
             <Stack spacing={4}>
               <FormControl id="current_password">
-                <FormLabel>current_password</FormLabel>
+                <FormLabel>Current Password</FormLabel>
                 <InputGroup>
                 <Input
                   type={showcurrPassword ? "text" : "password"}
                   autoComplete="off"
                   name="current_password"
                   id="current_password"
-                  placeholder="current_password"
+                  placeholder="Password"
                   value={values.current_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -108,14 +108,14 @@ export default function ResetPasswordForm() {
                 ) : null}
               </FormControl>
               <FormControl id="new_password">
-                <FormLabel>new_password</FormLabel>
+                <FormLabel>New Password</FormLabel>
                 <InputGroup>
                 <Input
                   autoComplete="off"
                   type={showPassword ? "text" : "password"}
                   name="new_password"
                   id="new_password"
-                  placeholder="new_password"
+                  placeholder="Password"
                   value={values.new_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -136,14 +136,14 @@ export default function ResetPasswordForm() {
                 ) : null}{" "}
               </FormControl>
               <FormControl id="confirm_password">
-                <FormLabel>confirm_password</FormLabel>
+                <FormLabel>Confirm Password</FormLabel>
                 <InputGroup>
                 <Input
                   autoComplete="off"
                   name="confirm_password"
                   id="confirm_password"
                   type={showcPassword ? "text" : "password"}
-                  placeholder="confirm_password"
+                  placeholder="Password"
                   value={values.confirm_password}
                   onChange={handleChange}
                   onBlur={handleBlur}

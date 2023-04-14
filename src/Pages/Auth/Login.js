@@ -82,7 +82,7 @@ export default function Login() {
           <Box boxShadow={"lg"} p={8}>
             <Stack spacing={4}>
               <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
+                <FormLabel>Email address&nbsp;<span className="text-danger">*</span></FormLabel>
                 <Input
                   type="email"
                   autoComplete="off"
@@ -98,7 +98,7 @@ export default function Login() {
                 ) : null}
               </FormControl>
               <FormControl id="password">
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Password&nbsp;<span className="text-danger">*</span></FormLabel>
                 <InputGroup>
                   <Input
                     type={showPassword ? "text" : "password"}

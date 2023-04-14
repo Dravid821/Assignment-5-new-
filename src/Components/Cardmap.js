@@ -3,13 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
 import StarIcon from "@mui/icons-material/Star";
 import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
-import { NavLink,  } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import carddata from "../redux/Actions/actions";
 import { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import "../asset/scss/cardmap.scss";
 export default function Cardmap() {
-
   const items = useSelector((state) => state.datareducer.user);
   const [active, setActive] = useState(0);
   const totalPages = Math.ceil(100 / 8); // Total number of pages
@@ -47,10 +46,10 @@ export default function Cardmap() {
       <Pagination.Next key="next" onClick={() => handleChangePage(nextPage)} />
     );
   }
-// Pagination page change Function pass in useffects.
+  // Pagination page change Function pass in useffects.
   useEffect(() => {
     handleChangePage(1);
-  },[dispatch]);
+  }, [dispatch]);
   //Product Data Map
   return (
     //  <h1>{items[0].title}</h1>
@@ -87,7 +86,7 @@ export default function Cardmap() {
                       <div className="d-flex justify-content-center ">
                         <span className="mb-0">{item.title}</span>
                       </div>
-                    
+
                       <div className="d-flex justify-content-center pt-3">
                         <span>
                           <span class="badge bg-success">
