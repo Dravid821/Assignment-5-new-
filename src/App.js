@@ -4,15 +4,15 @@ import { Fragment } from "react";
 import Protetedroutes from "./app/protetedroutes";
 import Spinner from "react-bootstrap/Spinner";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import Error from "./View/pages/Error";
+import Error from "./Pages/View/Error";
 const Cardmap = lazy(() => import("./Components/Cardmap"));
 const Header = lazy(() => import("./Components/Header"));
 const Carddetail = lazy(() => import("./Components/Carddetail"));
-const Login = lazy(() => import("./View/auth/Login"));
-const Signup = lazy(() => import("./View/auth/Signup"));
-const Changepassword = lazy(() => import("./View/auth/Chagepassword"));
-const Profile = lazy(() => import("./View/pages/Profile"));
-const EditProfile = lazy(() => import("./View/pages/Editprofile"));
+const Login = lazy(() => import("./Pages/Auth/Login"));
+const Signup = lazy(() => import("./Pages/Auth/Signup"));
+const Changepassword = lazy(() => import("./Pages/Auth/Chagepassword"));
+const Profile = lazy(() => import("./Pages/View/Profile"));
+const EditProfile = lazy(() => import("./Pages/View/Editprofile"));
 
 function App() {
   return (

@@ -50,7 +50,7 @@ export default function Cardmap() {
 // Pagination page change Function pass in useffects.
   useEffect(() => {
     handleChangePage(1);
-  },[]);
+  },[dispatch]);
   //Product Data Map
   return (
     //  <h1>{items[0].title}</h1>
