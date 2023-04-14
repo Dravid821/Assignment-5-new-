@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
 import StarIcon from "@mui/icons-material/Star";
 import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
-import { NavLink } from "react-router-dom";
+import { NavLink,  } from "react-router-dom";
 import carddata from "../redux/Actions/actions";
 import { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
-import "../asset/scss/cardmap.scss"
+import "../asset/scss/cardmap.scss";
 export default function Cardmap() {
+
   const items = useSelector((state) => state.datareducer.user);
   const [active, setActive] = useState(0);
   const totalPages = Math.ceil(100 / 8); // Total number of pages
@@ -19,7 +20,7 @@ export default function Cardmap() {
 
   const handleChangePage = (number) => {
     setActive(number);
-    dispatch(carddata((number-1) * 8));
+    dispatch(carddata((number - 1) * 8));
   };
   //Add Pagination Funcnality
   let pagesitem = [];
@@ -28,9 +29,9 @@ export default function Cardmap() {
       <Pagination.Prev key="prev" onClick={() => handleChangePage(prevPage)} />
     );
   }
-  let startPage = Math.max(1, active-2); // Start page number
-  let endPage = Math.min(totalPages, startPage + 2); // End page number
-  for (let number = startPage ; number <= endPage; number++) {
+  let startPage = Math.max(1, active - 2); // Start page number
+  let endPage = Math.min(totalPages, startPage + 3); // End page number
+  for (let number = startPage; number <= endPage; number++) {
     pagesitem.push(
       <Pagination.Item
         key={number}
@@ -46,9 +47,10 @@ export default function Cardmap() {
       <Pagination.Next key="next" onClick={() => handleChangePage(nextPage)} />
     );
   }
+// Pagination page change Function pass in useffects.
   useEffect(() => {
     handleChangePage(1);
-  }, []);
+  },[]);
   //Product Data Map
   return (
     //  <h1>{items[0].title}</h1>
@@ -58,7 +60,7 @@ export default function Cardmap() {
           {items.products ? (
             items.products.map((item) => {
               return (
-                <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3 d-flex justify-content-center">
                   <MDBCard key={item.id} className="card">
                     <div className="d-flex justify-content-between p-3">
                       <p className="lead mb-0">Combo Offer</p>
@@ -77,43 +79,38 @@ export default function Cardmap() {
                       height={500}
                     />
                     <MDBCardBody>
-                      <div className="d-flex justify-content-between">
-                        <p className="small">
-                          <a href="#!" className="text-muted">
-                            {item.category}
-                          </a>
-                        </p>
-                        <p className="small text-danger">
+                      <div className="d-flex justify-content-center">
+                        <p className="small mb-0 text-danger">
                           <p>{item.brand}</p>
                         </p>
                       </div>
-
-                      <div className="d-flex justify-content-between mb-3">
+                      <div className="d-flex justify-content-center ">
                         <span className="mb-0">{item.title}</span>
+                      </div>
+                    
+                      <div className="d-flex justify-content-center pt-3">
+                        <span>
+                          <span class="badge bg-success">
+                            <div>
+                              {item.rating}
+                              <StarIcon fontSize="small" />
+                            </div>
+                          </span>
+                        </span>
+                      </div>
+                      <div className="d-flex justify-content-center pt-3">
                         <h5 className="text-dark mb-0">Price:${item.price}</h5>
                       </div>
-
-                      <div class="d-flex justify-content-between mb-2">
-                        <p class="text-muted mb-0">
-                          Available: <span class="fw-bold">{item.stock}</span>
-                        </p>
-                        <div class="ms-auto text-warning">
-                          <h5 className="">
-                            {item.rating}&nbsp;
-                            <span className="">
-                              <StarIcon />
-                            </span>
-                          </h5>
-                        </div>
+                      <div class="d-flex justify-content-center pt-4">
+                        <button type="button" class="btn btn-dark ">
+                          <NavLink
+                            to={`/${item.id}`}
+                            className="slink text-white"
+                          >
+                            View More
+                          </NavLink>
+                        </button>
                       </div>
-                      <button type="button" class="btn btn-dark">
-                        <NavLink
-                          to={`/${item.id}`}
-                          className="slink text-white"
-                        >
-                          View More
-                        </NavLink>
-                      </button>
                     </MDBCardBody>
                   </MDBCard>
                 </div>
@@ -127,9 +124,8 @@ export default function Cardmap() {
             </div>
           )}
           <br />
-          <hr />
           <div className="d-flex justify-content-center">
-            <Pagination className="pagination-line pagination_container">
+            <Pagination className="pagination-line pagination_container page">
               {pagesitem}
             </Pagination>
           </div>

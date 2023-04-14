@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarIcon from "@mui/icons-material/Star";
-import StarHalfIcon from "@mui/icons-material/StarHalf";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import "../asset/scss/carddetail.scss";
@@ -75,7 +74,7 @@ const Carddetail = () => {
                             <span class="badge bg-success">
                               <div>
                                 {data.rating}
-                                <StarIcon />
+                                <StarIcon fontSize="small"/>
                               </div>
                             </span>
                           </span>

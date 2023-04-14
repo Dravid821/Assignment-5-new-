@@ -109,7 +109,7 @@ export default function UserProfileEdit() {
                 onBlur={handleBlur}
               />
               {errors.first_name && touched.first_name ? (
-                <p className="form-error">{errors.first_name}</p>
+                <p className="text-danger">{errors.first_name}</p>
               ) : null}
             </FormControl>
             <FormControl id="last_name" isRequired>
@@ -125,7 +125,7 @@ export default function UserProfileEdit() {
                 onBlur={handleBlur}
               />
               {errors.last_name && touched.last_name ? (
-                <p className="form-error">{errors.last_name}</p>
+                <p className="text-danger">{errors.last_name}</p>
               ) : null}
             </FormControl>
             <FormControl id="email" isRequired>
@@ -141,7 +141,7 @@ export default function UserProfileEdit() {
                 onBlur={handleBlur}
               />
               {errors.email && touched.email ? (
-                <p className="form-error">{errors.email}</p>
+                <p className="text-danger">{errors.email}</p>
               ) : null}
             </FormControl>
             <FormControl id="mobile" isRequired>
@@ -157,7 +157,7 @@ export default function UserProfileEdit() {
                 onBlur={handleBlur}
               />
               {errors.mobile && touched.mobile ? (
-                <p className="form-error">{errors.mobile}</p>
+                <p className="text-danger">{errors.mobile}</p>
               ) : null}
             </FormControl>
             <Stack spacing={6} direction={["column", "row"]} pt={5}>
@@ -174,6 +174,7 @@ export default function UserProfileEdit() {
               </Button>
               </NavLink>
               <Button
+                id="submit"
                 type="submit"
                 bg={"blue.400"}
                 color={"white"}

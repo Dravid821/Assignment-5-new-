@@ -24,6 +24,7 @@ const initialValues = {
   new_password: "",
   confirm_password: "",
 };
+// Reset Password Function Start
 export default function ResetPasswordForm() {
   const [showcurrPassword, setShowcurrPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -68,6 +69,7 @@ export default function ResetPasswordForm() {
         localStorage.setItem("signUpData", JSON.stringify(signupdata));
       },
     });
+  // chakra UI for Change PAssword.
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
@@ -167,7 +169,7 @@ export default function ResetPasswordForm() {
                     Cancel
                   </Button>
                 </NavLink>
-                <Button type="submit" bg={"blue.400"} color={"white"}>
+                <Button id="submit" type="submit" bg={"blue.400"} color={"white"}>
                   Change Password
                 </Button>
               </Stack>

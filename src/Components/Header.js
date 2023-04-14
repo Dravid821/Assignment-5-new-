@@ -26,6 +26,7 @@ export default function Navbar(direction, ...args) {
     let signupdata = JSON.parse(localStorage.getItem("signUpData"));
     signupdata = signupdata.map((item) => {
       item.isActive = false;
+
       return item;
     });
     localStorage.setItem("signUpData", JSON.stringify(signupdata));
