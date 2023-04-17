@@ -13,12 +13,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { signupSchema } from "../../Validation/schema/signupschema";
+import { signupSchema } from "../../../Validation/schema/signupschema";
 import { NavLink } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { EncryptData } from "../../utils/Encry-Decry";
+import { EncryptData } from "../../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 //   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 //Start Signup Function.

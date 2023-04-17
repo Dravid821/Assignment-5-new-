@@ -2,17 +2,16 @@ import React, { Suspense, lazy } from "react";
 import "./App.css";
 import { Fragment } from "react";
 import Protetedroutes from "./app/protetedroutes";
-import Spinner from "react-bootstrap/Spinner";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import Error from "./Pages/View/Error";
+import Error from "./View/Pages/Page/Error";
 const Cardmap = lazy(() => import("./Components/Cardmap"));
 const Header = lazy(() => import("./Components/Header"));
 const Carddetail = lazy(() => import("./Components/Carddetail"));
-const Login = lazy(() => import("./Pages/Auth/Login"));
-const Signup = lazy(() => import("./Pages/Auth/Signup"));
-const Changepassword = lazy(() => import("./Pages/Auth/Chagepassword"));
-const Profile = lazy(() => import("./Pages/View/Profile"));
-const EditProfile = lazy(() => import("./Pages/View/Editprofile"));
+const Login = lazy(() => import("./View/Pages/Auth/Login"));
+const Signup = lazy(() => import("./View/Pages/Auth/Signup"));
+const Changepassword = lazy(() => import("./View/Pages/Auth/Chagepassword"));
+const Profile = lazy(() => import("./View/Pages/Page/Profile"));
+const EditProfile = lazy(() => import("./View/Pages/Page/Editprofile"));
 
 function App() {
   return (

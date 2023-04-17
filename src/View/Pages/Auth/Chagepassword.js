@@ -14,9 +14,9 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { Changepasswordschema } from "../../Validation/schema/changepasswordschema";
+import { Changepasswordschema } from "../../../Validation/schema/changepasswordschema";
 import { NavLink } from "react-router-dom";
-import { DecryptData, EncryptData } from "../../utils/Encry-Decry";
+import { DecryptData, EncryptData } from "../../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 // Initial Value Declaration
 const initialValues = {

@@ -14,10 +14,10 @@ import {
 } from "@chakra-ui/react";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
-import { loginSchema } from "../../Validation/schema/loginschema";
+import { loginSchema } from "../../../Validation/schema/loginschema";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { DecryptData } from "../../utils/Encry-Decry";
+import { DecryptData } from "../../../utils/Encry-Decry";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const initialValues = {
