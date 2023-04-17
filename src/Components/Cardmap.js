@@ -103,7 +103,7 @@ export default function Cardmap() {
                       <div class="d-flex justify-content-center pt-4">
                         <button type="button" class="btn btn-dark ">
                           <NavLink
-                            to={`/${item.id}`}
+                            to={`/product/${item.id}`}
                             className="slink text-white"
                           >
                             View More

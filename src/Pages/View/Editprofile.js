@@ -112,7 +112,7 @@ export default function UserProfileEdit() {
                 <p className="text-danger">{errors.first_name}</p>
               ) : null}
             </FormControl>
-            <FormControl id="last_name" isRequired>
+            <FormControl id="last_name" className="pt-3" >
               <FormLabel>Last Name</FormLabel>
               <Input
                 type="last_name"
@@ -128,7 +128,7 @@ export default function UserProfileEdit() {
                 <p className="text-danger">{errors.last_name}</p>
               ) : null}
             </FormControl>
-            <FormControl id="email" isRequired>
+            <FormControl id="email" isRequired className="pt-3">
               <FormLabel>Email address</FormLabel>
               <Input
                 type="email"
@@ -144,7 +144,7 @@ export default function UserProfileEdit() {
                 <p className="text-danger">{errors.email}</p>
               ) : null}
             </FormControl>
-            <FormControl id="mobile" isRequired>
+            <FormControl id="mobile" isRequired className="pt-3">
               <FormLabel>Mobile No</FormLabel>
               <Input
                 type="mobile"

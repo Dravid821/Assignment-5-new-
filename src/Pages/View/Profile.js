@@ -50,27 +50,30 @@ export default function UserProfileEdit() {
             </Center>
           </Stack>
         </FormControl>
-        <FormControl id="firstname">
+        <FormControl id="first_name">
           <FormLabel>First Name</FormLabel>
-          <Input
-            value={item[0].first_name}
-          />
+          <Input className="text-black" value={item[0].first_name} disabled />
         </FormControl>
         <FormControl id="lastname">
           <FormLabel>Last Name</FormLabel>
-          <Input value={item[0].last_name} />
+          <Input value={item[0].last_name} disabled className="text-black" />
         </FormControl>
         <FormControl id="email">
-          <FormLabel>Email Address</FormLabel>
+          <FormLabel htmlFor="email">Email Address</FormLabel>
           <Input
             value={item[0].email}
             _placeholder={{ color: "gray.500" }}
             type="email"
+            disabled
           />
         </FormControl>
         <FormControl id="password">
           <FormLabel>Mobile No</FormLabel>
-          <Input value={item[0].mobile} _placeholder={{ color: "gray.500" }} />
+          <Input
+            value={item[0].mobile}
+            _placeholder={{ color: "gray.500" }}
+            disabled
+          />
         </FormControl>
 
         <NavLink to={"/editprofile"}>

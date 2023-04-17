@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         {/* <Pagination/> */}
         <Suspense
-          fallback={<Spinner animation="border" role="status"></Spinner>}
+
         >
           <Routes>
             <Route path="/signup" element={<Signup />} />
@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route path="*" element={<Error />} />
             <Route element={<Protetedroutes />}>
-              <Route path="product/:id" element={<Carddetail />} />
+              <Route path="/product/:id" element={<Carddetail />} />
               <Route
                 path="/product"
                 element={
@@ -58,7 +58,7 @@ function App() {
                 }
               />
               <Route
-                path="/changepass"
+                path="/changepassword"
                 element={
                   <Fragment>
                     <Header />

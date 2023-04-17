@@ -103,7 +103,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="first_name"
                     id="first_name"
-                    placeholder="first_name"
+                    placeholder="name"
                     value={values.first_name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -121,7 +121,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="last_name"
                     id="last_name"
-                    placeholder="last_name"
+                    placeholder="name"
                     value={values.last_name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -199,7 +199,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="confirm_password"
                     id="confirm_password"
-                    placeholder="confirm_password"
+                    placeholder="password"
                     value={values.confirm_password}
                     onChange={handleChange}
                     onBlur={handleBlur}

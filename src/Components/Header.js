@@ -73,11 +73,10 @@ export default function Navbar(direction, ...args) {
                     />
                   </DropdownToggle>
                   <DropdownMenu {...args}>
-                    <hr />
                     <NavLink to={"/profile"}>
                       <DropdownItem>Profile</DropdownItem>
                     </NavLink>
-                    <NavLink to={"/changepass"}>
+                    <NavLink to={"/changepassword"}>
                       <DropdownItem>Change Password</DropdownItem>
                     </NavLink>
                     <NavLink to={"/"}>

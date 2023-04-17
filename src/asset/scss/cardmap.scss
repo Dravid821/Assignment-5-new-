@@ -1,9 +1,18 @@
-.card{
-    width: 350px !important;
-    height: 550px !important;
-    justify-content: space-between;
+.card {
+  width: 350px !important;
+  height: 550px !important;
+  justify-content: space-between;
+  //   background-color: white;
+  //   box-shadow:1px 2px 2px 2px rgba(0, 0.20, 0.20, 0.20);
+  //   border-radius: 8px;
+  //   box-shadow: -1px 3px 10px -3px rgba(0, 0, 0, 0.55);
+  //   border-radius: 10px;
+  //   margin: 8px;
+  box-shadow: -1px 10px 30px -3px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  margin: 8px;
 }
-.page{
-    padding: 20px;
-    position: absolute;
+.page {
+  padding: 20px;
+  position: absolute;
 }
