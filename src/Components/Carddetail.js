@@ -6,32 +6,24 @@ import StarIcon from "@mui/icons-material/Star";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import "../asset/scss/carddetail.scss";
+import { ApiData } from "../redux/Actions/actions";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import Productdata from "./ProductAPi";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 const Carddetail = () => {
-  const [data, setData] = useState({});
+  const data = useSelector((state) => state.datareducer.user);
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  //Product detail page Api Fetching
   useEffect(() => {
-    const fetchData = async () => {
-      if (isNaN(id)) {
-        navigate("*");
-        return;
-      }
-      try {
-        const response = await Productdata(id); // Call the Productdata function with the id parameter
-        setData(response);
-        console.log("data", data);
-      } catch (error) {
-        const msg = error.message;
-        console.log("error", msg);
-      }
-    };
-    fetchData();
+    if (isNaN(id)) {
+      navigate("*");
+      return;
+    }
+    dispatch(ApiData(id));
   }, []);
   const BackToShop = () => {
     navigate("/");

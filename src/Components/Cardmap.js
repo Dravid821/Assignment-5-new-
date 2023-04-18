@@ -4,7 +4,7 @@ import Spinner from "react-bootstrap/Spinner";
 import StarIcon from "@mui/icons-material/Star";
 import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
-import carddata from "../redux/Actions/actions";
+import { carddata } from '../redux/Actions/actions';
 import { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import "../asset/scss/cardmap.scss";

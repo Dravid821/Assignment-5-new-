@@ -4,8 +4,8 @@ import {
   FETCH_DATA_COME,
   FETCH_DATA_ERROR,
 } from "../Constant";
-let url =(skip=1)=> `https://dummyjson.com/products?limit=8&skip=${skip}`;
-
+let url = (skip = 1) => `https://dummyjson.com/products?limit=8&skip=${skip}`;
+let url1 = (id = 1) => `https://dummyjson.com/products/${id}`;
 export const fetchcome = () => {
   return {
     type: FETCH_DATA_COME,
@@ -47,5 +47,21 @@ export const carddata = (skip) => {
       });
   };
 };
-export default carddata;
 
+export const ApiData = (id) => {
+  return (dispatch) => {
+    dispatch(fetchcome());
+    axios
+      .get(url1(id))
+      .then((res) => {
+        const data = res.data;
+        dispatch(fetchsuccess(data));
+        console.log(res.data);
+      })
+      .catch((err) => {
+        const message = err.message;
+        dispatch(fetcherror(message));
+        console.log(err.message);
+      });
+  };
+};
