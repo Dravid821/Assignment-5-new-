@@ -87,7 +87,7 @@ export default function ResetPasswordForm() {
                   autoComplete="off"
                   name="current_password"
                   id="current_password"
-                  placeholder="Password"
+                  placeholder="Current Password"
                   value={values.current_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -115,7 +115,7 @@ export default function ResetPasswordForm() {
                   type={showPassword ? "text" : "password"}
                   name="new_password"
                   id="new_password"
-                  placeholder="Password"
+                  placeholder="New Password"
                   value={values.new_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -143,7 +143,7 @@ export default function ResetPasswordForm() {
                   name="confirm_password"
                   id="confirm_password"
                   type={showcPassword ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder="Confirm Password"
                   value={values.confirm_password}
                   onChange={handleChange}
                   onBlur={handleBlur}

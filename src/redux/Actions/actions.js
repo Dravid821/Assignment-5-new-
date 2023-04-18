@@ -48,3 +48,4 @@ export const carddata = (skip) => {
   };
 };
 export default carddata;
+

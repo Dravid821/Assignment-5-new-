@@ -9,24 +9,29 @@ import "../asset/scss/carddetail.scss";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import Productdata from "./ProductAPi";
+import { toast } from "react-hot-toast";
 const Carddetail = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(data);
-  console.log(data.images);
   //Product detail page Api Fetching
   useEffect(() => {
-    axios
-      .get(` https://dummyjson.com/products/${id}`)
-      .then((response) => {
-        setData(response.data);
+    const fetchData = async () => {
+      if (isNaN(id)) {
+        navigate("*");
+        return;
+      }
+      try {
+        const response = await Productdata(id); // Call the Productdata function with the id parameter
+        setData(response);
         console.log("data", data);
-      })
-      .catch((error) => {
+      } catch (error) {
         const msg = error.message;
         console.log("error", msg);
-      });
+      }
+    };
+    fetchData();
   }, []);
   const BackToShop = () => {
     navigate("/");
@@ -74,7 +79,7 @@ const Carddetail = () => {
                             <span class="badge bg-success">
                               <div>
                                 {data.rating}
-                                <StarIcon fontSize="small"/>
+                                <StarIcon fontSize="small" />
                               </div>
                             </span>
                           </span>
@@ -124,7 +129,7 @@ const Carddetail = () => {
         ) : (
           <div className="text-center">
             <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden"></span>
             </Spinner>
           </div>
         )}

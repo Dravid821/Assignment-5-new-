@@ -59,7 +59,10 @@ export default function Cardmap() {
           {items.products ? (
             items.products.map((item) => {
               return (
-                <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3 d-flex justify-content-center">
+                <div
+                  key={item.id}
+                  className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3 d-flex justify-content-center"
+                >
                   <MDBCard key={item.id} className="card">
                     <div className="d-flex justify-content-between p-3">
                       <p className="lead mb-0">Combo Offer</p>
@@ -118,7 +121,7 @@ export default function Cardmap() {
           ) : (
             <div className="text-center">
               <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
+                <span className="visually-hidden"></span>
               </Spinner>
             </div>
           )}

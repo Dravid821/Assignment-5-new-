@@ -88,7 +88,7 @@ export default function Login() {
                   autoComplete="off"
                   name="email"
                   id="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -105,7 +105,7 @@ export default function Login() {
                     autoComplete="off"
                     name="password"
                     id="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}

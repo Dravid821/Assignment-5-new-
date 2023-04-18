@@ -103,7 +103,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="first_name"
                     id="first_name"
-                    placeholder="name"
+                    placeholder="First Name"
                     value={values.first_name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -121,7 +121,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="last_name"
                     id="last_name"
-                    placeholder="name"
+                    placeholder="Last Name"
                     value={values.last_name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -138,7 +138,7 @@ export default function SignupCard() {
                   autoComplete="off"
                   name="email"
                   id="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -154,7 +154,7 @@ export default function SignupCard() {
                   autoComplete="off"
                   name="mobile"
                   id="mobile"
-                  placeholder="mobile"
+                  placeholder="Mobile"
                   value={values.mobile}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -171,7 +171,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="password"
                     id="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -199,7 +199,7 @@ export default function SignupCard() {
                     autoComplete="off"
                     name="confirm_password"
                     id="confirm_password"
-                    placeholder="password"
+                    placeholder="Confirm Password"
                     value={values.confirm_password}
                     onChange={handleChange}
                     onBlur={handleBlur}
